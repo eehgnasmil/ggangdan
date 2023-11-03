@@ -57,8 +57,8 @@ body {
             <div class="login__check">
                 <a href="" class="login__forgot">Forgot Password?</a>
             </div>
-
-            <button class="login__button">login</button>
+	
+            <a href="login"><button class="login__button">login</button></a>
 
             <p class="login__register">
                 <a href="join">Don't have an account? </a>

@@ -16,18 +16,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Handles requests for the application home page.
  */
 @Controller
+@RequestMapping("main")
 public class MainController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
 		
-		return "home";
+		return "main/main";
 	}
-	
-	@GetMapping("join")
-	public String join() {
-		
-		return "join";
-	}
-	
 }
