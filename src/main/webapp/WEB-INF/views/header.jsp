@@ -10,16 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="<%=request.getContextPath() %>/resources/js/header.js"></script>
-    <%
-    	String id = (String)session.getAttribute("id");
-    	String codename = (String)session.getAttribute("codename");
-    %>
-    <script>
-    	alert("어서오세요~ " + <%=codename%> + "회원님 ");
-    	$('.sign_btn').click(function(){
-    		session.invalidate();
-    	})
-    </script>
+    
 </head>
 <body>
     <header>
@@ -34,17 +25,13 @@
            	<img src="<%=request.getContextPath() %>/resources/imgs/headerlogo.png" alt="logo">
         </div>
         <div class="category">
-        	<div class="investigationList">
-        	
-        	</div>
-        	<p class="addcategory">+ 새로운 수사 파일</p>     
-        </div>
-           
+            <p class="addcategory">+ 새로운 수사 파일</p>
+        </div>    
     </div>
     <div class="newcategoryalert">
         <div class="newcategoryname">
             <h3>새로운 수사명을 입력해주세요.</h3>
-            <input type="text" name="investigationName" placeholer="새로운 수사 파일">
+            <input type="text">
             <div class="button_container">
                 <Button class="newbtn">새로만들기</Button>
                 <Button class="cancelbtn">취소</Button>
