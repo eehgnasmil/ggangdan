@@ -4,9 +4,9 @@ $(document).ready(function() {
 
         if ($categoryMenu.hasClass('hidden')) {
             $categoryMenu.removeClass('hidden');
-            $categoryMenu.animate({ width: '300px' }, 300);
+            $categoryMenu.animate({ left: '0' }, 300);
         } else {
-            $categoryMenu.animate({ width: '0px' }, 300, function() {
+            $categoryMenu.animate({ left: '-300px' }, 300, function() {
                 $categoryMenu.addClass('hidden');
             });
         }
