@@ -68,9 +68,8 @@
                         </div>
                     </div>
                 </div>
-                <input type="button" class="join__button" onclick="join();"
-                    value="Join"> <a href="/home"><input type="button"
-                    class="join__button" value="Login"></a>
+                <input type="button" class="join__button join_btn" onclick="join();"value="Join"> 
+                <a href="<%=request.getContextPath() %>"><input type="button" class="join__button" value="Login"></a>
             </form>
         </div>      
   
