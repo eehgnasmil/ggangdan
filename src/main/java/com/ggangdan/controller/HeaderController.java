@@ -34,7 +34,6 @@ public class HeaderController {
 	@PostMapping("insertinvestigation")
 	@ResponseBody
 	public int insertinvestigation(String investigationName) {
-		System.out.println(investigationName);
 		int rs = HeaderService.insertInvestigation(investigationName);
 		return rs;
 	}

@@ -26,6 +26,7 @@ header {
     background-color: #45474B;
     color: #fff;
     padding: 20px 50px 20px 50px;
+    position: relative;
 }
 
 header h1 {
@@ -58,10 +59,12 @@ header h1 {
 }
 
 .categorymenu {
-    width: 0px; /* 원하는 너비 설정 */
+	width:300px;
     height: 100vh; /* 부모 요소의 높이를 100%로 설정하여 수직으로 확장 */
     background-color: #333; /* 배경 색상 설정 */
     color: #fff; /* 텍스트 색상 설정 */
+    position: absolute;
+    left: -310px;
 }
 
 .logo {
@@ -81,6 +84,7 @@ header h1 {
 }
 
 .categorymenu p {
+	width: 235px;
     padding: 10px;
     font-family: 'GmarketSansMedium';
     cursor: pointer;

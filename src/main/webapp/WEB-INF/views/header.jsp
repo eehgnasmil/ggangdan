@@ -17,7 +17,7 @@
         <h1>GGANGDAN</h1>
         <Button class="sign_btn">로그인</Button>
     </header>
-    <div class="categorymenu hidden">
+    <div class="categorymenu">
         <div class="logo">
             <img src="<%=request.getContextPath() %>/resources/imgs/headerlogo.png" alt="logo">
         </div>

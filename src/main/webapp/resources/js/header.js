@@ -40,14 +40,14 @@ $(document).ready(function() {
     getinvestigationslist();
     $('.menu-icon').on('click',function() {
         var $categoryMenu = $('.categorymenu');
-
-        if ($categoryMenu.hasClass('hidden')) {
-            $categoryMenu.removeClass('hidden');
-            $categoryMenu.animate({ width: '300px' }, 300);
+		var currentLeft = parseFloat($categoryMenu.css('left'));
+		
+        if (currentLeft < 0) {
+            $categoryMenu.animate({ left: '0px' }, 300);
+            $('.main').animate({ paddingLeft: '300px' }, 300);
         } else {
-            $categoryMenu.animate({ width: '0px' }, 300, function() {
-                $categoryMenu.addClass('hidden');
-            });
+            $categoryMenu.animate({ left: '-310px' }, 300);
+            $('.main').animate({ paddingLeft: '0px' }, 300);
         }
     });
 
