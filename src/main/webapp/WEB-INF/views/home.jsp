@@ -27,7 +27,7 @@
 						alert("아이디 또는 비밀번호를 잘못입력하셨습니다");
 						location.href = "<%=request.getContextPath() %>";
 					} else {
-						location.href = "login";
+						location.href = "<%=request.getContextPath()%>/main/main";
 					}
 				},
 				error: function(xhr, status, error){

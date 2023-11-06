@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("main")
 public class MainController {
 	
-	@RequestMapping("main")
+	@RequestMapping(value = "main", method = RequestMethod.GET)
 	public String home() {
 		
 		return "main/main";

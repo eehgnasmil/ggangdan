@@ -48,19 +48,12 @@ public class HomeController {
 		return "forget";
 	}
 
-	@RequestMapping("login")
-	public String login() {
-		return "main/main";
-	}
-
 	@PostMapping("login")
 	@ResponseBody
 	public int login(MemberDTO dto, HttpSession session) {
-		MemberDTO getdto = service.getMemberLogin(dto.getId());
-		System.out.println("It this here??");
+		MemberDTO getdto = service.getMemberLogin(dto.getId());		
 
 		int rs = 0;
-		ModelAndView mav = new ModelAndView();
 		if (getdto != null && (dto.getPw() != null && dto.getPw().equals(getdto.getPw()))) {
 			session.setAttribute("id", getdto.getId());
 			session.setAttribute("codename", getdto.getCodename());
@@ -75,9 +68,7 @@ public class HomeController {
 	@ResponseBody
 	public int register(MemberDTO dto, HttpServletResponse response) {
 		int rs = service.insert(dto);
-		System.out.println("rs : " + rs);
 
-		ModelAndView mav = new ModelAndView();
 		return rs;
 
 	}
