@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <input type="button" class="join__button" onclick="join();"
-                    value="Join"> <a href="login"><input type="button"
+                    value="Join"> <a href="/home"><input type="button"
                     class="join__button" value="Login"></a>
             </form>
         </div>      

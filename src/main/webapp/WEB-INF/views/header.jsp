@@ -22,13 +22,17 @@
             <img src="<%=request.getContextPath() %>/resources/imgs/headerlogo.png" alt="logo">
         </div>
         <div class="category">
-            <p class="addcategory">+ 새로운 수사 파일</p>
-        </div>    
+        	<div class="investigationList">
+        	
+        	</div>
+        	<p class="addcategory">+ 새로운 수사 파일</p>     
+        </div>
+           
     </div>
     <div class="newcategoryalert">
         <div class="newcategoryname">
             <h3>새로운 수사명을 입력해주세요.</h3>
-            <input type="text">
+            <input type="text" name="investigationName" placeholer="새로운 수사 파일">
             <div class="button_container">
                 <Button class="newbtn">새로만들기</Button>
                 <Button class="cancelbtn">취소</Button>
