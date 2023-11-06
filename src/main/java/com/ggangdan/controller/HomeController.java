@@ -32,56 +32,57 @@ public class HomeController {
 	@Autowired
 	@Qualifier("memberServiceImpl")
 	MemberService service;
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
-		
+
 		return "home";
 	}
-	
+
 	@GetMapping("join")
 	public String join() {
 		return "join";
 	}
-	
+
 	@GetMapping("forget")
 	public String forget() {
 		return "forget";
 	}
-	
+
 	@RequestMapping("login")
 	public String login() {
 		return "main/main";
 	}
-	
+
 	@PostMapping("login")
 	@ResponseBody
-	public int login(MemberDTO dto,HttpSession session) {
+	public int login(MemberDTO dto, HttpSession session) {
 		MemberDTO getdto = service.getMemberLogin(dto.getId());
 		System.out.println("It this here??");
-		
+
 		int rs = 0;
 		ModelAndView mav = new ModelAndView();
 		if (getdto != null && (dto.getPw() != null && dto.getPw().equals(getdto.getPw()))) {
-			session.setAttribute("id",getdto.getId());
-			session.setAttribute("codename",getdto.getCodename());
+			session.setAttribute("id", getdto.getId());
+			session.setAttribute("codename", getdto.getCodename());
 			System.out.println("�α��� ������");
 			rs = 1;
 		} else {
 			rs = 0;
 			System.out.println("���� �� �α��� �ȵ�");
-		}	
+		}
 		return rs;
 	}
-	
+
 	@PostMapping("join")
 	@ResponseBody
 	public int register(MemberDTO dto, HttpServletResponse response) {
 		int rs = service.insert(dto);
-		System.out.println("rs : "+ rs);
-		
+		System.out.println("rs : " + rs);
+
 		ModelAndView mav = new ModelAndView();
 		return rs;
 
 	}
+
 }

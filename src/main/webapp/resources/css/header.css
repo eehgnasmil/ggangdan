@@ -64,12 +64,12 @@ header  a {
 }
 
 .categorymenu {
-    width: 300px; 
-    height: 100vh; 
-    background-color: #333; 
-    color: #fff;
+	width:300px;
+    height: 100vh; /* 부모 요소의 높이를 100%로 설정하여 수직으로 확장 */
+    background-color: #333; /* 배경 색상 설정 */
+    color: #fff; /* 텍스트 색상 설정 */
     position: absolute;
-    left: -300px;
+    left: -310px;
 }
 
 .logo {
@@ -89,6 +89,7 @@ header  a {
 }
 
 .categorymenu p {
+	width: 235px;
     padding: 10px;
     font-family: 'GmarketSansMedium';
     cursor: pointer;

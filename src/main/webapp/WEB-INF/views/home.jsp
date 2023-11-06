@@ -89,13 +89,14 @@ body {
             <div class="login__check">
                 <a href="forget" class="login__forgot">Forgot Password?</a>
             </div>
-	
             <button class="login__button">login</button>
+
 
             <p class="login__register">
                 <a href="join">Don't have an account? </a>
             </p>
         </form>
+        <a href="<%=request.getContextPath()%>/main/main"><button class="login__button">login</button></a>
     </div>
 </div>
 
