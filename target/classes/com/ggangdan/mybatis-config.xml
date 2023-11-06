@@ -4,6 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
+		<typeAlias type="com.ggangdan.dto.MemberDTO" alias="memberDTO"/>
 		<typeAlias type="com.ggangdan.dto.InvestigationDTO" alias="investigationDTO"/>
 	</typeAliases>
 </configuration>

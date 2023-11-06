@@ -94,6 +94,10 @@ body {
 	cursor: pointer;
 }
 
+.rename:hover{
+	background-color: #79AC78;
+}
+
 .complete:hover {
 	background-color: #98A8F8;
 }

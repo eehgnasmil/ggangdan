@@ -22,7 +22,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ggangdan.dto.MemberDTO;
 import com.ggangdan.service.MemberService;
-import com.google.gson.JsonObject;
 
 /**
  * Handles requests for the application home page.
@@ -65,11 +64,9 @@ public class HomeController {
 		if (getdto != null && (dto.getPw() != null && dto.getPw().equals(getdto.getPw()))) {
 			session.setAttribute("id", getdto.getId());
 			session.setAttribute("codename", getdto.getCodename());
-			System.out.println("�α��� ������");
 			rs = 1;
 		} else {
 			rs = 0;
-			System.out.println("���� �� �α��� �ȵ�");
 		}
 		return rs;
 	}

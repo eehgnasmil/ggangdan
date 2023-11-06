@@ -92,6 +92,7 @@ header  a {
 	width: 235px;
     padding: 10px;
     font-family: 'GmarketSansMedium';
+    background-color:transparent;
     cursor: pointer;
 }
 

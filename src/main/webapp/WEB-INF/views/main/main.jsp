@@ -16,6 +16,7 @@
 		<div class="investigationinfo">
 			<div class="investigation"></div>
 			<div class="investigationButtons">
+				<button class="rename">수사 변경</button>
 				<button class="complete">수사 완료</Button>
 				<button class="cancel">의뢰 취소</button>
 			</div>

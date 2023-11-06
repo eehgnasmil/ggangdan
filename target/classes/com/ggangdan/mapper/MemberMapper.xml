@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ggangdan.mapper.MemberMapper">
+	<select id="getMemberLogin" parameterType="String" resultType="memberDTO">
+		select id,pw,codename,department, grade, lv, exp from member where id = #{id};
+	</select>
+	<insert id="insert" parameterType="memberDTO">
+		insert into member(id,pw,codename, department) values(#{id},#{pw},#{codename},#{department});
+	</insert>
+</mapper>
