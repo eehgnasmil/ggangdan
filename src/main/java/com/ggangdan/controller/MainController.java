@@ -16,6 +16,10 @@ import com.ggangdan.serviceImpl.HeaderServiceImpl;
 import com.ggangdan.service.MainService;
 import com.ggangdan.service.MemberService;
 
+import com.ggangdan.service.MemberService;
+import com.ggangdan.serviceImpl.MainServiceImpl;
+
+
 /**
  * Handles requests for the application home page.
  */
@@ -35,12 +39,13 @@ public class MainController {
 	@Qualifier("memberServiceImpl")
 	MemberService MemberService;
 
+
 	@RequestMapping("main")
 	public String home() {
 
 		return "main/main";
-	}
-
+	}	
+	
 	@RequestMapping("write")
 	public String write() {
 		return "main/write";
@@ -49,7 +54,7 @@ public class MainController {
 	@RequestMapping("getInvestigation")
 	@ResponseBody
 	public InvestigationDTO getInvestigation(int idx) {
-
+		
 		return MainService.getInvestigation(idx);
 	}
 
@@ -71,4 +76,15 @@ public class MainController {
 		return rs;
 	}
 
+
+	@PostMapping("getOne")
+	@ResponseBody
+	public MemberDTO getOne(MemberDTO dto, HttpServletResponse response) {
+		MemberDTO getdto = MainService.getOne(dto.getId());
+
+		return getdto;
+		
+	}
+
 }
+

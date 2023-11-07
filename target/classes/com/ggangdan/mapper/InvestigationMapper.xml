@@ -19,4 +19,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateInverstigation" parameterType="InvestigationDTO">
 		update investigationslist set investigationName=#{investigationName} where codename=#{codename};
 	</update>
+
 </mapper>

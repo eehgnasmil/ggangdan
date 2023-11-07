@@ -66,6 +66,7 @@
 		
 		
 	</script>
+
 <body>
 	
 	<div class="main">
@@ -92,6 +93,7 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="investigationinfo">
 			<div class="investigationName">
 				<p>사건 파일<p>
@@ -116,6 +118,7 @@
 				<a href="write">
 					<button>글쓰기</button>
 				</a>
+
 			</div>
 			<div class="board"></div>
 		</div>
