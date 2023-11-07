@@ -33,8 +33,15 @@
 				<div class="progress"></div>
 			</div>
 		</div>
-		<div class="investigationbestboard"></div>
-		<div class="investigationboard"></div>
+		<div class="investigationbestboard">
+			
+		</div>
+		<div class="investigationboard">
+			<div class="search">
+				<button>글쓰기</button>
+			</div>
+			<div class="board"></div>
+		</div>
 	</div>
 	</div>
 </body>
