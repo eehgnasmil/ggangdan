@@ -27,6 +27,7 @@ function insert(){
 			dataType: "json",
 			success: function(rs) {
 				if(rs == 1) {
+					console.log("회원가입 성공"+ rs);
 					location.href = "./";
 				}else {
 					alert("이미 있는 회원입니다");

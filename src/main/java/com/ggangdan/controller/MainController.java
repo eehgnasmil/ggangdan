@@ -1,6 +1,5 @@
 package com.ggangdan.controller;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.ggangdan.dto.InvestigationDTO;
 import com.ggangdan.dto.MemberDTO;
 import com.ggangdan.serviceImpl.HeaderServiceImpl;
-import com.ggangdan.service.MainService;
 import com.ggangdan.service.MemberService;
+import com.ggangdan.serviceImpl.MainServiceImpl;
 
 /**
  * Handles requests for the application home page.
@@ -22,7 +21,6 @@ import com.ggangdan.service.MemberService;
 @Controller
 @RequestMapping("main")
 public class MainController {
-
 	@Autowired
 	@Qualifier("headerServiceImpl")
 	HeaderServiceImpl HeaderService;
@@ -39,6 +37,17 @@ public class MainController {
 	public String home() {
 
 		return "main/main";
+	}	
+	
+	@RequestMapping("write")
+	public String write() {
+		return "main/write";
+	}
+	@RequestMapping("getInvestigation")
+	@ResponseBody
+	public InvestigationDTO getInvestigation(int idx) {
+		
+		return MainService.getInvestigation(idx);
 	}
 
 	@RequestMapping("write")
@@ -72,3 +81,4 @@ public class MainController {
 	}
 
 }
+

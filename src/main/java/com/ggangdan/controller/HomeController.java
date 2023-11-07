@@ -42,7 +42,7 @@ public class HomeController {
 	public String join() {
 		return "join";
 	}
-	
+
 	@GetMapping("forget")
 	public String forget() {
 		return "forget";
@@ -52,6 +52,7 @@ public class HomeController {
 	@ResponseBody
 	public int login(MemberDTO dto, HttpSession session) {
 		MemberDTO getdto = service.login(dto.getId());		
+
 
 		int rs = 0;
 		if (getdto != null && (dto.getPw() != null && dto.getPw().equals(getdto.getPw()))) {
@@ -80,5 +81,6 @@ public class HomeController {
 		return rs;
 		
 	}
+
 
 }

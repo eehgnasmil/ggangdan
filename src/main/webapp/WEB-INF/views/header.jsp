@@ -31,6 +31,7 @@
             <span class="ggangdan">GGANGDAN</span>
         </a>
         <a class="logout" href="logout">
+
         	<Button class="sign_btn">로그아웃</Button>
         </a>
     </header>

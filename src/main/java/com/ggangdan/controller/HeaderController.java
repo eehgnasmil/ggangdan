@@ -30,7 +30,7 @@ public class HeaderController {
 	@RequestMapping("logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "redirect: /basic";
+		return "redirect: /home";
 	}
 	
 	@PostMapping("getinvestigationslist")

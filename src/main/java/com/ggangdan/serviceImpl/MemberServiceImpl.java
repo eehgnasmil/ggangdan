@@ -34,7 +34,6 @@ public class MemberServiceImpl implements MemberService {
 			return rs;
 		}
 	}
-	
 	@Override
 	public int update(MemberDTO dto) {
 		int rs = 0;
@@ -64,4 +63,5 @@ public class MemberServiceImpl implements MemberService {
 		int rs = 1;
 		return rs;
 	}
+
 }

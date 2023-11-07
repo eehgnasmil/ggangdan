@@ -13,4 +13,5 @@ public interface InvestigationMapper {
 	int insertInvestigation(Map<String,String> map);
 	InvestigationDTO getInvestigation(int idx);
 	int updateInverstigation(InvestigationDTO dto);
+
 }

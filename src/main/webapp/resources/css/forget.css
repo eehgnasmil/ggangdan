@@ -31,8 +31,9 @@
 }
 
 body, input, button {
-    font-size: var(--normal-font-size);
-    font-family: 'neurimboGothicRegular';
+
+   font-size: var(--normal-font-size);
+   font-family: var(--body-font);
 }
 body {
     padding: 0;
