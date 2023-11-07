@@ -12,4 +12,5 @@ import lombok.ToString;
 public class InvestigationDTO {
 	private int idx;
 	private String investigationName;
+	private String codename;
 }
