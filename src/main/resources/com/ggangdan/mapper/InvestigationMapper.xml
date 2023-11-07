@@ -7,7 +7,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getInvestigationList" resultType="InvestigationDTO">
 		select * from investigationslist order by idx desc;
 	</select>
-	<insert id="insertInvestigation" parameterType="String">
-		insert into investigationslist(investigationName) values (#{investigationName});
+	
+	<select id="getInvestigation" parameterType="int" resultType="InvestigationDTO">
+		select * from investigationslist where idx=#{idx};
+	</select>
+	
+	<insert id="insertInvestigation" parameterType="Map">
+		insert into investigationslist(investigationName,codename) values (#{investigationName},#{codename});
 	</insert>
 </mapper>

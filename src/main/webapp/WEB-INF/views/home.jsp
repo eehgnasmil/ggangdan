@@ -12,36 +12,36 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="<%=request.getContextPath() %>/resources/js/home.js"></script>
 <script>
-	$().ready(function(){
-		function getMemberLogin(){
-			var id = $('#id').val();
-			var pw = $('#login-pass').val();
-			const params = {id:id, pw:pw};
-			$.ajax({
-				type:"POST",
-				url: "login",
-				data: params,
-				dataType: "json",
-				success: function(dto) {
-					if(dto == 0) {
-						alert("아이디 또는 비밀번호를 잘못입력하셨습니다");
-						location.href = "<%=request.getContextPath() %>";
-					} else {
-						location.href = "<%=request.getContextPath()%>/main/main";
-					}
-				},
-				error: function(xhr, status, error){
-					console.log(xhr, status, error);
-				}
-			});
-		};
-		
-		$(function(){
-			$('.login__button').click(function(){
-				getMemberLogin();
-			})
-		})
-	})
+   $().ready(function(){
+      function getMemberLogin(){
+         var id = $('#id').val();
+         var pw = $('#login-pass').val();
+         const params = {id:id, pw:pw};
+         $.ajax({
+            type:"POST",
+            url: "login",
+            data: params,
+            dataType: "json",
+            success: function(dto) {
+               if(dto == 0) {
+                  alert("아이디 또는 비밀번호를 잘못입력하셨습니다");
+                  location.href = "<%=request.getContextPath() %>";
+               } else {
+                  location.href = "<%=request.getContextPath()%>/main/main";
+               }
+            },
+            error: function(xhr, status, error){
+               console.log(xhr, status, error);
+            }
+         });
+      };
+      
+      $(function(){
+         $('.login__button').click(function(){
+            getMemberLogin();
+         })
+      })
+   })
 </script>
 <style>
 body {
@@ -63,7 +63,7 @@ body {
         <span class="key">N</span>
     </div>
     <div class="login hidden" id="elementToToggle" >
-        <form action="login" name="login__form" class="login__form" method="POST">
+        <div class="login__form">
             <h1 class="login__title">login</h1>
 
             <div class="login__content">
@@ -89,14 +89,13 @@ body {
             <div class="login__check">
                 <a href="forget" class="login__forgot">Forgot Password?</a>
             </div>
+   
             <button class="login__button">login</button>
-
 
             <p class="login__register">
                 <a href="join">Don't have an account? </a>
             </p>
-        </form>
-        <a href="<%=request.getContextPath()%>/main/main"><button class="login__button">login</button></a>
+        </div>
     </div>
 </div>
 

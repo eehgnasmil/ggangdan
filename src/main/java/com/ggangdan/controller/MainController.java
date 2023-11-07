@@ -1,16 +1,18 @@
 package com.ggangdan.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
+import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.ggangdan.dto.InvestigationDTO;
+import com.ggangdan.dto.MemberDTO;
+import com.ggangdan.serviceImpl.HeaderServiceImpl;
+import com.ggangdan.serviceImpl.MainServiceImpl;
 
 /**
  * Handles requests for the application home page.
@@ -19,10 +21,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("main")
 public class MainController {
 	
-	@RequestMapping(value = "main", method = RequestMethod.GET)
+	@Autowired
+	@Qualifier("headerServiceImpl")
+	HeaderServiceImpl HeaderService;
+	
+	@Autowired
+	@Qualifier("mainServiceImpl")
+	MainServiceImpl MainService;
+	
+	@RequestMapping("main")
 	public String home() {
 		
 		return "main/main";
 	}	
+	
+	@RequestMapping("getInvestigation")
+	@ResponseBody
+	public InvestigationDTO getInvestigation(int idx) {
+		
+		return MainService.getInvestigation(idx);
+	}
 }
 

@@ -1,6 +1,7 @@
 package com.ggangdan.serviceImpl;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public class HeaderServiceImpl implements HeaderService{
 		return Investigation.getInvestigationList();
 	}
 	
-	public int insertInvestigation(String investigationName) {
-		return Investigation.insertInvestigation(investigationName);
+	public int insertInvestigation(Map<String,String> map) {
+		return Investigation.insertInvestigation(map);
 	}
 }

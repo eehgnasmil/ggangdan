@@ -47,7 +47,7 @@ public class HomeController {
 	public String forget() {
 		return "forget";
 	}
-
+	
 	@PostMapping("login")
 	@ResponseBody
 	public int login(MemberDTO dto, HttpSession session) {
@@ -70,7 +70,7 @@ public class HomeController {
 		int rs = service.insert(dto);
 
 		return rs;
-
+		
 	}
 
 }

@@ -6,7 +6,7 @@ function getinvestigationslist() {
 		success: function(data) {
             let str = "";
             for(items of data) {
-                str += "<p id=\"" + items.idx + "\" class=\"investigation\">" + items.investigationName + "</p>";
+                str += "<p data-value=\"" + items.idx + "\" class=\"investigation\">" + items.investigationName + "</p>";
             }
 			
             $('.investigationList').html(str);
@@ -38,16 +38,19 @@ function insertinvestigation(investigationName) {
 
 $(document).ready(function() {
     getinvestigationslist();
-    $('.menu-icon').on('click',function() {
+ 	var clickCount = 0;
+
+      $('.menu-icon').on('click', function() {
+        clickCount++;
         var $categoryMenu = $('.categorymenu');
-        if ($categoryMenu.hasClass('hidden')) {
+
+        if (clickCount % 2 === 1) {
             $categoryMenu.removeClass('hidden');
             $categoryMenu.animate({ left: '0' }, 300);
         } else {
             $categoryMenu.animate({ left: '-300px' }, 300, function() {
                 $categoryMenu.addClass('hidden');
             });
-		
         }
     });
 
