@@ -8,5 +8,8 @@ public interface MemberService {
 	public int update(MemberDTO dto);
 	MemberDTO getOne(String id);
 	public int logout(String id);
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 }

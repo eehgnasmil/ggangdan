@@ -16,5 +16,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getOne" parameterType="String" resultType="memberDTO">
 		select id,pw,codename,department, grade, lv, exp from member where id = #{id};
 	</select>
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 </mapper>

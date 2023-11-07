@@ -1,5 +1,6 @@
 package com.ggangdan.controller;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +12,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ggangdan.dto.InvestigationDTO;
 import com.ggangdan.dto.MemberDTO;
+import com.ggangdan.service.MemberService;
 import com.ggangdan.serviceImpl.HeaderServiceImpl;
+<<<<<<< Updated upstream
 import com.ggangdan.service.MemberService;
 import com.ggangdan.serviceImpl.MainServiceImpl;
+=======
+>>>>>>> Stashed changes
 
 /**
  * Handles requests for the application home page.
@@ -27,12 +32,17 @@ public class MainController {
 
 	@Autowired
 	@Qualifier("mainServiceImpl")
+<<<<<<< Updated upstream
 	MainService MainService;
 
 	@Autowired
 	@Qualifier("memberServiceImpl")
 	MemberService MemberService;
 
+=======
+	MemberService MainService;
+	
+>>>>>>> Stashed changes
 	@RequestMapping("main")
 	public String home() {
 
@@ -49,6 +59,7 @@ public class MainController {
 		
 		return MainService.getInvestigation(idx);
 	}
+<<<<<<< Updated upstream
 
 	@RequestMapping("write")
 	public String write() {
@@ -80,5 +91,15 @@ public class MainController {
 		return rs;
 	}
 
+=======
+	@PostMapping("getOne")
+	@ResponseBody
+	public MemberDTO getOne(MemberDTO dto, HttpServletResponse response) {
+		MemberDTO getdto = MainService.getOne(dto.getId());
+
+		return getdto;
+		
+	}
+>>>>>>> Stashed changes
 }
 

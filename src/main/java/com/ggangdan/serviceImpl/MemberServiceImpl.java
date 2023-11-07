@@ -34,6 +34,10 @@ public class MemberServiceImpl implements MemberService {
 			return rs;
 		}
 	}
+<<<<<<< Updated upstream
+=======
+	
+>>>>>>> Stashed changes
 	@Override
 	public int update(MemberDTO dto) {
 		int rs = 0;
@@ -50,10 +54,15 @@ public class MemberServiceImpl implements MemberService {
 		MemberDTO dto = null;
 		try {
 			dto = member.getOne(id);
+<<<<<<< Updated upstream
 			System.out.println("여긴? dto : "+ dto);
 			return dto;
 		} catch (Exception e) {
 			System.out.println("여긴?22 dto : "+ dto);
+=======
+			return dto;
+		} catch (Exception e) {
+>>>>>>> Stashed changes
 			return dto;
 		}
 	}
@@ -63,5 +72,8 @@ public class MemberServiceImpl implements MemberService {
 		int rs = 1;
 		return rs;
 	}
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 }
