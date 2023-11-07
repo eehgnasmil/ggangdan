@@ -35,6 +35,10 @@ public class MainController {
 		return "main/main";
 	}	
 	
+	@RequestMapping("write")
+	public String write() {
+		return "main/write";
+	}
 	@RequestMapping("getInvestigation")
 	@ResponseBody
 	public InvestigationDTO getInvestigation(int idx) {

@@ -17,9 +17,6 @@
     <script>
 		var id = <%=id%>;
 		var codename = <%=codename%>;
-		
-		console.log(id);
-		console.log(codename);
 
     	if(codename == null) {
 			alert("로그인 후에 이용 가능합니다");
@@ -28,12 +25,14 @@
     </script>
 </head>
 <body>
-    <header>
+    <header class="header">
         <i class="menu-icon fas fa-bars"></i>
-       	<a href="<%=request.getContextPath() %>">
-       		<h1>GGANGDAN</h1>
+       	<a class="home" href="<%=request.getContextPath() %>">
+       		<span class="ggangdan">GGANGDAN</span>
     	</a>
-        <Button class="sign_btn"><a href="logout">로그아웃</a></Button>
+    	<a class="logout" href="logout">
+        	<Button class="sign_btn">로그아웃</Button>
+        </a>
     </header>
     <div class="categorymenu">
         <div class="logo">

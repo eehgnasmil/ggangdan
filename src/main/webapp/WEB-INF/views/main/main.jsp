@@ -38,7 +38,9 @@
 		</div>
 		<div class="investigationboard">
 			<div class="search">
+			<a href="write">
 				<button>글쓰기</button>
+			</a>
 			</div>
 			<div class="board"></div>
 		</div>

@@ -153,9 +153,16 @@ body {
 	cursor: pointer;
 }
 
+.investigationboard .search button a {
+	text-decoration: none; /* 하이퍼링크 텍스트에 밑줄(라인) 제거 */
+	color:white;
+}
+
+.investigationboard .search button a:hover {
+	color: #45474B;
+}
 .investigationboard .search button:hover {
 	background-color:  white;
-	color: #45474B;
 }
 
 .investigationboard .board {
