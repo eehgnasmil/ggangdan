@@ -1,0 +1,74 @@
+.selectimg {
+	position: absolute;
+    width: 590px;
+    height: 390px;
+    background-color: #181818;
+    z-index: 900;
+    border-radius: 10px;
+    bottom: 25%;
+    padding: 10px;
+    text-align: left;
+}
+
+.profilImglist {
+    background-color: #272829;
+    border-radius: 10px;
+    width: 570px;
+    height: 300px;
+    margin-bottom: 10px;
+    padding: 10px;
+    overflow: scroll;
+}
+
+.custom-file-button {
+    /* 원하는 스타일을 여기에 적용하세요 */
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border: none;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right:auto;
+}
+
+.custom-file-button:hover {
+	background-color: #45474B;
+    color: #fff;
+}
+
+.fileName {
+	font-size: 0.8rem;
+	color:white;
+}
+
+.profileupload {
+	display:flex;
+	background-color: #272829;
+	align-items:center;	
+	padding:10px;
+	border-radius: 10px;
+}
+
+.imageUpload {
+	background-color: white;
+    color: black;
+    padding: 10px;
+    border: none;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left:auto;
+}
+
+.imageUpload:hover {
+	background-color: #45474B;
+    color: #fff;
+}
+.profilImglist img {
+	width:100px;
+	height:100px;
+	background-color:#333;
+	border-radius:10px;
+	margin-right: 10px;
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ggangdan.mapper.InvestigationMapper">
+	<select id="getInvestigationList" resultType="InvestigationDTO">
+		select * from investigationslist order by idx desc;
+	</select>
+	
+	<select id="getInvestigation" parameterType="int" resultType="InvestigationDTO">
+		select * from investigationslist where idx=#{idx};
+	</select>
+	
+	<insert id="insertInvestigation" parameterType="Map">
+		insert into investigationslist(investigationName,codename) values (#{investigationName},#{codename});
+	</insert>
+	
+	<update id="updateInverstigation" parameterType="InvestigationDTO">
+		update investigationslist set investigationName=#{investigationName} where codename=#{codename};
+	</update>
+	
+	<select id="getList" parameterType="String" resultType="InvestigationDTO">
+		select * from investigationslist where investigationName=#{investigationName};
+	</select>
+	
+	<update id="complete" parameterType="int">
+		update investigationslist set complete= 1 where idx=#{idx};
+	</update>
+	
+	<update id="cancel" parameterType="int">
+		delete from investigationslist where idx = #{idx};
+	</update>
+</mapper>
