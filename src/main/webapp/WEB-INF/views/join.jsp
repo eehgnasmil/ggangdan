@@ -10,6 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     
     <script src="<%=request.getContextPath() %>/resources/js/join.js"></script>
+   
 </head>
 <style>
     body {
@@ -29,13 +30,13 @@
 </div>
     <div class="join_contents">
         <div class="join">
-            <form action="register" name="join__form" class="join__form"
+            <form action="join" name="join__form" class="join__form"
                 method="POST">
                 <h1 class="join__title">JOIN</h1>
                 <div class="join__content">
                     <div class="join__box">
                         <div class="join__box-input">
-                            <input type="ID" name="id" required class="join__input"
+                            <input type="ID" name="id" required id="id" class="join__input"
                                 placeholder=""> <label for="" class="join__label">ID</label>
                         </div>
                     </div>
@@ -43,7 +44,7 @@
                 <div class="join__content">
                     <div class="join__box">
                         <div class="join__box-input">
-                            <input type="password" name="pw" value="" required
+                            <input type="password" name="pw" id="pw" value="" required
                                 class="join__input" placeholder=""> <label for=""
                                 class="join__label">PW</label>
                         </div>
@@ -52,7 +53,7 @@
                 <div class="join__content">
                     <div class="join__box">
                         <div class="join__box-input">
-                            <input type="password" name="checkpw" value="" required
+                            <input type="password" name="checkpw" id="pwCheck" value="" required
                                 class="join__input" placeholder=""> <label for=""
                                 class="join__label">PW CHECK</label>
                         </div>
@@ -61,15 +62,14 @@
                 <div class="join__content">
                     <div class="join__box">
                         <div class="join__box-input">
-                            <input type="text" name="codename" value="" required
+                            <input type="text" name="codename" id="codename" value="" required
                                 class="join__input" placeholder=""> <label for=""
                                 class="join__label">CODE NAME</label>
                         </div>
                     </div>
                 </div>
-                <input type="button" class="join__button" onclick="join();"
-                    value="Join"> <a href="login"><input type="button"
-                    class="join__button" value="Login"></a>
+                <input type="button" class="join__button join_btn" onclick="join();"value="Join"> 
+                <a href="<%=request.getContextPath() %>"><input type="button" class="join__button" value="Login"></a>
             </form>
         </div>      
   

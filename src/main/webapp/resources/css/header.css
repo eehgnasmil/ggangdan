@@ -20,26 +20,55 @@
 .hidden {
     display: none;
 }
-header {
-    display: flex;
+.investigationList {
+    display: grid;
+    /* gap: 10px; */
+    grid-template-columns: repeat(1,1fr);
+}
+.caseProgress,
+.caseComplete
+ {
+ 	display: flex;
+    flex-direction: column;
+    align-items: self-start;
+ }
+ .caseComplete .cCBox > p {
+ 	 text-decoration: line-through;
+     text-decoration-color: #ddd;
+     text-decoration-thickness: 2px;
+     color: #9d9d9d;
+ }
+/* .caseProgress {border-right : 1px solid #272829;}
+.caseComplete {border-left : 1px solid #272829;} */
+.header {
+    display: flex !important;
     align-items: center;
+    justify-content : space-between;
     background-color: #45474B;
     color: #fff;
     padding: 20px 50px 20px 50px;
+    position: relative;
 }
 
-header h1 {
+.header .ggangdan {
     font-family: 'neurimboGothicRegular';
-    margin-left: auto; /* 왼쪽 여백을 자동으로 설정하여 중앙으로 정렬합니다 */
+    margin-left: auto; 
+    font-size: 35px;
+    font-weight: 900;
+}
+.header .home {
+	display : inline-block;
+	text-decoration: none;
+	color: inherit;
 }
 
 .sign_btn {
     font-family: 'GmarketSansMedium';
     background-color: #F5F7F8;
+    color: black;
     width: 100px;
     height: 50px;
     border-radius: 10px;
-    margin-left: auto;
     cursor: pointer;
 }
 
@@ -54,14 +83,32 @@ header h1 {
 }
 
 .menu-icon:hover {
-    color: black; /* 원하는 색상으로 변경 (예: 빨간색) */
+    color: black; 
 }
 
 .categorymenu {
-    width: 0px; /* 원하는 너비 설정 */
+	width:300px;
     height: 100vh; /* 부모 요소의 높이를 100%로 설정하여 수직으로 확장 */
     background-color: #333; /* 배경 색상 설정 */
     color: #fff; /* 텍스트 색상 설정 */
+    position: absolute;
+    left: -310px;
+    z-index: 999;
+}
+.categoryTextBox {
+	display: grid;
+	grid-template-columns: repeat(2,1fr);
+	margin-bottom: 10px;
+}
+.c_text:hover {
+	background: #272829;
+	border-radius: 10px;
+	cursor:pointer;
+}
+.CCNothing {
+    text-align: center;
+    padding: 10px 5px 20px 5px;
+    box-sizing: border-box;
 }
 
 .logo {
@@ -80,10 +127,24 @@ header h1 {
     padding: 20px;
 }
 
+.c_text {
+	text-align: center;
+	padding: 10px;
+	box-sizing: border-box;
+}
 .categorymenu p {
+	width: 100%;
     padding: 10px;
     font-family: 'GmarketSansMedium';
+    background-color:transparent;
     cursor: pointer;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+}
+.cCBox,
+.cPBox {
+	width:100%;
+	font-size : 15px;
 }
 
 .categorymenu p:hover {
@@ -101,13 +162,13 @@ header h1 {
     z-index: 999;
     display: flex;
     justify-content: center;
-    visibility: hidden; /* 초기에는 숨김 상태로 설정 */
+    visibility: hidden; 
     align-items: center;
 }
 
 .newcategoryalert.show {
-    opacity: 1; /* 나타날 때 투명도를 변경 */
-    visibility: visible; /* 나타날 때 숨김 상태를 변경 */
+    opacity: 1; 
+    visibility: visible; 
 }
 
 .newcategoryname {
@@ -140,8 +201,11 @@ header h1 {
     color: #333;
 }
 
+.logout {
+	text-decoration: none;
+}
 .button_container {
-    margin-top: 20px; /* 텍스트와 버튼 사이의 간격 조절 */
+    margin-top: 20px; 
 }
 
 .button_container button {
