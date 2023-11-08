@@ -16,6 +16,7 @@ import com.ggangdan.service.HeaderService;
 import com.ggangdan.service.MainService;
 import com.ggangdan.service.MemberService;
 
+
 /**
  * Handles requests for the application home page.
  */
@@ -39,6 +40,13 @@ public class MainController {
 	public String home() {
 
 		return "main/main";
+	}	
+
+	@RequestMapping("getInvestigation")
+	@ResponseBody
+	public InvestigationDTO getInvestigation(int idx) {
+		
+		return MainService.getInvestigation(idx);
 	}
 
 	@RequestMapping("write")
@@ -60,7 +68,6 @@ public class MainController {
 		return getdto;
 
 	}
-	
 	@PostMapping("getList")
 	@ResponseBody
 	public InvestigationDTO getList(String investigationName) {
@@ -68,7 +75,7 @@ public class MainController {
 		return getdto;
 		
 	}
-	
+
 	@RequestMapping("updateInverstigation")
 	@ResponseBody
 	public int updateInverstigation(InvestigationDTO dto) {
@@ -89,7 +96,9 @@ public class MainController {
 		System.out.println("idx : " + idx);
 		int rs = MainService.cancel(idx);
 		System.out.println("rs : " + rs);
+
 		return rs;
 	}
 
 }
+

@@ -31,7 +31,7 @@
 								$('.grade').text(arr[i]);
 							}
 						}
-						
+
 						$('.lv').text(dto.lv);
 						$('.exp').css("width",dto.exp+"%");
 					},
@@ -41,8 +41,6 @@
 				});
 			};
 			getOne();
-			
-			
 			
 		})
 		
@@ -97,6 +95,7 @@
 				<button class="cancel">의뢰 취소</button>
 			</div>
 		</div>
+
 		<div class="progress-region">
 			<p>수사 진행률 : 50%</p>
 			<div class="progress-bar">

@@ -8,4 +8,5 @@ public interface MainService {
 	InvestigationDTO getList(String investigationName);
 	int complete(int idx);
 	int cancel(int idx);
+
 }

@@ -68,5 +68,4 @@ public class InvestigationDTO {
 				+ ", complete=" + complete + "]";
 	}
 	
-	
 }

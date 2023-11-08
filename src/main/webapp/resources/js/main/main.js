@@ -184,5 +184,4 @@ $(document).ready(function() {
 	$('.cancel').click(function(){
 		confirmDelete(dataValueIdx);
 	});
-	
 });

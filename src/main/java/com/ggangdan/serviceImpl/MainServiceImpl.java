@@ -38,6 +38,7 @@ public class MainServiceImpl implements MainService{
 	public int cancel(int idx) { 
 		System.out.println("여긱기기기기기");
 		return Investigation.cancel(idx);
+
 	}
 
 }

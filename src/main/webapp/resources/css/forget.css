@@ -33,6 +33,7 @@
 body, input, button {
     font-size: var(--normal-font-size);
     font-family: 'neurimboGothicRegular';
+
 }
 body {
     padding: 0;

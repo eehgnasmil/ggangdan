@@ -20,7 +20,6 @@ public class HeaderServiceImpl implements HeaderService{
 		return Investigation.getInvestigationList();
 	}
 	
-	
 	public int insertInvestigation(Map<String,String> map) {
 		return Investigation.insertInvestigation(map);
 	}

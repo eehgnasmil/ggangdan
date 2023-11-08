@@ -62,6 +62,8 @@ $(document).ready(function() {
                 $categoryMenu.addClass('hidden');
             });
         }
+        
+        
     });
 
     $('.sign_btn').on('click',function() {
@@ -77,6 +79,16 @@ $(document).ready(function() {
     $('.addcategory').on('click',function() {
         $('.newcategoryalert').addClass('show');
         $(".newcategoryname input").val(null);
+    });
+
+    $('.newbtn').on('click',function() {
+        var investigationName = $("input[name='investigationName']").val();
+        if(investigationName.trim() == "" ) {
+            alert("수사 파일 명을 입력해주세요!");
+        } else {
+            insertinvestigation(investigationName);
+        }
+        
     });
 
     $('.newbtn').on('click',function() {

@@ -30,5 +30,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="cancel" parameterType="int">
 		delete from investigationslist where idx = #{idx};
+
 	</update>
 </mapper>
