@@ -1,3 +1,29 @@
+/* var arr = []; */
+var arr = ["깨갱..", "깽", "깡", "깨수깡", "깽스터"];
+
+function getOne() {
+	$.ajax({
+		type: "POST",
+		url: "getOne",
+		dataType: "json",
+		success: function(dto) {
+			$('.department').text(dto.department);
+			$('.codename').text(dto.codename);
+			for (let i = 0; i < arr.length; i++) {
+				if (i == dto.grade) {
+					$('.grade').text(arr[i]);
+				}
+			}
+
+			$('.lv').text(dto.lv);
+			$('.exp').css("width", dto.exp + "%");
+		},
+		error: function(xhr, status, error) {
+			console.log(xhr, status, error);
+		}
+	});
+};
+
 function getProfileImage() {
 	console.log("test");
 	$.ajax({
@@ -47,6 +73,7 @@ function uploadFile() {
 }
 
 $(document).ready(function() {
+	getOne();
 	$('.profileimg').on('click', function() {
 		getProfileImage();
 		if ($('.selectimg').hasClass('hidden')) {
@@ -55,23 +82,23 @@ $(document).ready(function() {
 			$('.selectimg').addClass('hidden');
 		}
 	});
-	
+
 	$('.imageUpload').on('click', function() {
 		uploadFile();
 	});
-	
+
 	$('#fileInput').on("change", function() {
 		console.log(this.files[0].name);
 		console.log(this.files.length);
-        if (this.files.length > 0) {
-            $('.fileName').text("선택한 이미지 : " + this.files[0].name);
-        } else {
-            $('.fileName').text("원하는 프로필 사진을 첨부해주세요.");
-        }
-    });
-    
-    $(document).on('click', '.profileimgs', function() {
-    	var image = this.getAttribute("src");
-    	$('.profileimg').attr("src",image);
-    });
+		if (this.files.length > 0) {
+			$('.fileName').text("선택한 이미지 : " + this.files[0].name);
+		} else {
+			$('.fileName').text("원하는 프로필 사진을 첨부해주세요.");
+		}
+	});
+
+	$(document).on('click', '.profileimgs', function() {
+		var image = this.getAttribute("src");
+		$('.profileimg').attr("src", image);
+	});
 });

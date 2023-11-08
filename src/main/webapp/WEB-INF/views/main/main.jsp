@@ -10,42 +10,6 @@
 	href="<%=request.getContextPath()%>/resources/css/main/main.css">
 <script src="<%=request.getContextPath()%>/resources/js/main/main.js"></script>
 </head>
-<script>
-		$(function(){
-			/* var arr = []; */
-			var arr = ["깨갱..", "깽", "깡", "깨수깡", "깽스터"];
-			function getOne(){
-				var id = "<%=id%>";
-				const params = {id:id};
-				$.ajax({
-					type:"POST",
-					url: "getOne",
-					data: params,
-					dataType: "json",
-					success: function(dto) {
-						$('.department').text(dto.department);
-						$('.codename').text(dto.codename);
-						for(let i=0; i<arr.length; i++) {
-							if(i == dto.grade) {
-								$('.grade').text(arr[i]);
-							}
-						}
-
-						$('.lv').text(dto.lv);
-						$('.exp').css("width",dto.exp+"%");
-					},
-					error: function(xhr, status, error){
-						console.log(xhr, status, error);
-					}
-				});
-			};
-			getOne();
-			
-		})
-		
-		
-	</script>
-
 <body>
 	<div class="black_box">
 		<div class="changeName">
