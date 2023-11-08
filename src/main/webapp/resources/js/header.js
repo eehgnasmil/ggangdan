@@ -1,3 +1,40 @@
+function getInvestigation(idx) {
+    $.ajax({
+		url: "getInvestigation",
+		type: "POST",
+        data: {idx},
+        dataType: "json",
+		success: function(data) {
+			str = ""
+			
+			str += "<p><span>";
+			str += "사건 번호 " + data.idx + " - <span style=\"color: #FF9B9B;\">" + data.investigationName + "</span>";
+			str += "</span> &nbsp; 의뢰인 : " + data.codename + "</p>";
+			 
+			$('.investigationName').html(str);
+			
+			var put = '<a href="write?idx='+data.idx+'"><button class="writebtn">글쓰기</button></a>';
+			$('.write').html(put);
+			if(codename != data.codename) {
+				console.log("비활성화!!");
+				$(".rename").prop("disabled", true);
+				$(".complete").prop("disabled", true);
+				$(".cancel").prop("disabled", true);
+			} else {
+				console.log("활성화!!");
+				$(".rename").prop("disabled", false);
+				$(".complete").prop("disabled", false);
+				$(".cancel").prop("disabled", false);
+			}
+		},
+		error: function(xhr, status, error) {
+			console.log(xhr, status, error);
+		}
+	})
+}
+
+
+
 function getinvestigationslist() {
 	$.ajax({
 		url: "getinvestigationslist",
@@ -53,6 +90,8 @@ $(document).ready(function() {
                 $categoryMenu.addClass('hidden');
             });
         }
+        
+        
     });
 
     $('.sign_btn').on('click',function() {
@@ -81,5 +120,14 @@ $(document).ready(function() {
 
     $('.cancelbtn').on('click',function() {
         $('.newcategoryalert').removeClass('show');
+    });
+    
+    $(document).on('click', '.investigation', function () {
+        var dataValue = $(this).data('value');
+        $('.investigation').css('background-color', 'transparent');
+        $(this).css('background-color','black');
+        $(this).css('border-radius','10px');
+        
+        getInvestigation(dataValue);
     });
 })

@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ggangdan.dto.BoardVO;
 import com.ggangdan.service.BoardService;
+import com.ggangdan.service.MainService;
 
 
 @Controller
@@ -22,13 +23,18 @@ public class BoardController {
 	@Qualifier("boardServiceImpl")
 	BoardService boardService;
 	
+	@Autowired
+	@Qualifier("mainServiceImpl")
+	MainService mainService;
+	
 	@GetMapping("write")
-	public ModelAndView write(HttpSession session) {
+	public ModelAndView write(HttpSession session, int idx) {
 		String codename = (String)session.getAttribute("codename");
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("codename", codename);
-		mav.addObject("", codename);
+		mav.addObject("iidx", idx);
+		
 		mav.setViewName("main/write");
 		return mav;
 	}

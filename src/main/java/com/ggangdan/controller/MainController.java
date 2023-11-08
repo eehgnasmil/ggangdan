@@ -45,11 +45,6 @@ public class MainController {
 
 		return "main/main";
 	}	
-	
-	@RequestMapping("write")
-	public String write() {
-		return "main/write";
-	}
 
 	@RequestMapping("getInvestigation")
 	@ResponseBody
@@ -74,16 +69,6 @@ public class MainController {
 		int rs = MainService.updateInverstigation(dto);
 		
 		return rs;
-	}
-
-
-	@PostMapping("getOne")
-	@ResponseBody
-	public MemberDTO getOne(MemberDTO dto, HttpServletResponse response) {
-		MemberDTO getdto = MainService.getOne(dto.getId());
-
-		return getdto;
-		
 	}
 
 }

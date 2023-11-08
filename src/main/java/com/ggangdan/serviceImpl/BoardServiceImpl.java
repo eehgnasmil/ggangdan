@@ -25,13 +25,20 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void insert(BoardVO vo) {
+		
+		
 		MultipartFile file = vo.getFile();
+		
+		if (file.isEmpty()) {
+            // MultipartFile이 비어 있을 때, 대체 이미지 경로로 대체
+            String defaultImagePath = "/resources/noimg.jpg";
+            
+        } 
+		
 		String fileRealName = file.getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드!
 		vo.setOfile(fileRealName);
 		long size = file.getSize(); //파일 사이즈
 
-		System.out.println("파일명 : "  + fileRealName);
-		System.out.println("용량크기(byte) : " + size);
 		//서버에 저장할 파일이름 fileextension으로 .jsp이런식의  확장자 명을 구함
 		String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."),fileRealName.length());
 		String uploadFolder = "E:\\kdigital2307\\spring\\springws\\ggangdan\\src\\main\\webapp\\resources\\file";
@@ -45,12 +52,9 @@ public class BoardServiceImpl implements BoardService{
 		 */
 
 		UUID uuid = UUID.randomUUID();
-		System.out.println(uuid.toString());
 		String[] uuids = uuid.toString().split("-");
 
 		String uniqueName = uuids[0];
-		System.out.println("생성된 고유문자열" + uniqueName);
-		System.out.println("확장자명" + fileExtension);
 		
 		vo.setSfile(uniqueName);
 

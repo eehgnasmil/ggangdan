@@ -6,6 +6,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.ggangdan.mapper.BoardMapper">
 	
 	<insert id="insert" parameterType="BoardVO">
-		insert into board(id,title,content,ofile,sfile) values(#{id},#{title},#{content},#{ofile},#{sfile});
+		insert into board(iidx, codename ,title,content,ofile,sfile) values(#{iidx},#{codename},#{title},#{content},#{ofile},#{sfile});
 	</insert>
 </mapper>

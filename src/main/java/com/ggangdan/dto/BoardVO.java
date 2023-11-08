@@ -10,8 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BoardVO {
+	private int iidx;
 	private int idx;
-	private String id;
+	private String codename;
 	private String title;
 	private String content;
 	private String ofile;
