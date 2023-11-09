@@ -1,0 +1,263 @@
+@font-face {
+    font-family: 'neurimboGothicRegular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/neurimboGothicRegular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.hidden {
+    display: none;
+}
+.investigationList {
+    display: grid;
+    /* gap: 10px; */
+    grid-template-columns: repeat(1,1fr);
+}
+.caseProgress,
+.caseComplete
+ {
+ 	display: flex;
+    flex-direction: column;
+    align-items: self-start;
+ }
+ .caseComplete .cCBox > p {
+ 	 text-decoration: line-through;
+     text-decoration-color: #ddd;
+     text-decoration-thickness: 2px;
+     color: #9d9d9d;
+ }
+/* .caseProgress {border-right : 1px solid #272829;}
+.caseComplete {border-left : 1px solid #272829;} */
+
+.header {
+    display: flex !important;
+    align-items: center;
+    justify-content : space-between;
+    background-color: #45474B;
+    color: #fff;
+    padding: 20px 50px 20px 50px;
+    position: relative;
+}
+
+.header .ggangdan {
+    font-family: 'neurimboGothicRegular';
+    margin-left: auto; 
+    font-size: 35px;
+    font-weight: 900;
+}
+.header .home {
+	display : inline-block;
+	text-decoration: none;
+	color: inherit;
+}
+
+.sign_btn {
+    font-family: 'GmarketSansMedium';
+    background-color: #F5F7F8;
+    color: black;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.sign_btn:hover {
+	background-color: black;
+	color: white;
+}
+
+.menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.menu-icon:hover {
+    color: black; 
+}
+.test {
+	display: inline-block;
+	width: 300px;
+	height : 100vh;
+	background: #333;
+	color: #333;
+	right: -310px;
+	z-index: 999;
+}
+
+.categorymenu {
+	width:300px;
+    height: 100vh; /* 부모 요소의 높이를 100%로 설정하여 수직으로 확장 */
+    background-color: #333; /* 배경 색상 설정 */
+    color: #fff; /* 텍스트 색상 설정 */
+    position: absolute;
+    left: 0px;
+    z-index: 999;
+}
+
+.categoryTextBox {
+	display: grid;
+	grid-template-columns: repeat(2,1fr);
+	margin-bottom: 10px;
+}
+
+.c_text:hover {
+	background: #272829;
+	border-radius: 10px;
+	cursor:pointer;
+}
+
+.CCNothing {
+    text-align: center;
+    padding: 10px 5px 20px 5px;
+    box-sizing: border-box;
+}
+
+.logo {
+    height: 100px;
+    background-color: #272829;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo img {
+    width: 70%;
+}
+
+.category {
+    padding: 20px;
+}
+
+.c_text {
+	text-align: center;
+	padding: 10px;
+	box-sizing: border-box;
+}
+.categorymenu p {
+	width: 100%;
+    padding: 10px;
+    font-family: 'GmarketSansMedium';
+    background:transparent;
+    cursor: pointer;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+}
+.cCBox,
+.cPBox {
+	width:100%;
+	font-size : 15px;
+
+}
+
+.categorymenu p:hover {
+    background: #272829;
+    border-radius: 10px;
+}
+
+.newcategoryalert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    visibility: hidden; 
+    align-items: center;
+}
+
+.newcategoryalert.show {
+    opacity: 1; 
+    visibility: visible; 
+}
+
+.newcategoryname {
+    width: 50vh;
+    height: 20vh;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.newcategoryname h3 {
+    font-family: 'GmarketSansMedium';
+    margin-bottom: 15px;
+}
+
+.newcategoryname input {
+    font-family: 'GmarketSansMedium';
+    font-weight: 200;
+    width: 25vh;
+    height: 3vh;
+    border-radius: 10px;
+    text-align: center;
+	border-radius: 10px;
+	background: #f9f9f9;
+	border: 3px solid #ddd;
+    color: #333;
+}
+
+.logout {
+	text-decoration: none;
+}
+.button_container {
+    margin-top: 20px; 
+}
+
+.button_container button {
+    font-family: 'GmarketSansMedium';
+    width: 120px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+}
+
+.newbtn {
+    background-color: #068FFF;
+    color: white;
+    cursor: pointer;
+}
+
+.cancelbtn {
+    background-color: #E96479;
+    color:white;
+    cursor: pointer;
+}
+
+.write {
+	margin-bottom: 10px;
+	text-align: right;
+}
+
+.writebtn {
+	font-family: 'GmarketSansMedium';
+	width: 80px;
+	height: 40px;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.writebtn:hover{
+	background: #45474B;
+	color: white
+}
+
