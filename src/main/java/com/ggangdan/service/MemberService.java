@@ -1,5 +1,7 @@
 package com.ggangdan.service;
 
+import java.util.List;
+
 import com.ggangdan.dto.MemberDTO;
 
 public interface MemberService {

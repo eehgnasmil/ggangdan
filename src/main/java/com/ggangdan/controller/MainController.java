@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ggangdan.dto.BoardVO;
 import com.ggangdan.dto.InvestigationDTO;
 import com.ggangdan.dto.MemberDTO;
 import com.ggangdan.dto.ProfileImageDTO;
@@ -62,51 +64,51 @@ public class MainController {
 
 		return MainService.getInvestigation(idx);
 	}
-		
+
 	@PostMapping("uploadFile")
 	@ResponseBody
-    public int fileUpload(@RequestParam("file") MultipartFile file,HttpSession session,HttpServletRequest request) throws IOException {
+	public int fileUpload(@RequestParam("file") MultipartFile file, HttpSession session, HttpServletRequest request)
+			throws IOException {
 		int rs = 0;
 		String originalFileName = file.getOriginalFilename();
 		String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
-		String codename = (String)session.getAttribute("codename");
-		
-        if (!file.isEmpty()) {
-        	
-        	String imagePath = "D:\\kdigital2307\\Spring\\springws\\ggangdan\\src\\main\\webapp\\resources\\imgs\\uploadImg";
-			
-            String reName; 
-            UUID uuid = UUID.randomUUID();
-            String[] uuids = uuid.toString().split("-");
-            String uniqueName = uuids[0];
+		String codename = (String) session.getAttribute("codename");
+
+		if (!file.isEmpty()) {
+
+			String imagePath = "D:\\kdigital2307\\Spring\\springws\\ggangdan\\src\\main\\webapp\\resources\\imgs\\uploadImg";
+
+			String reName;
+			UUID uuid = UUID.randomUUID();
+			String[] uuids = uuid.toString().split("-");
+			String uniqueName = uuids[0];
 
 			System.out.println(originalFileName);
 			reName = uniqueName + fileExtension;
-			File saveFile = new File(imagePath,reName);
+			File saveFile = new File(imagePath, reName);
 			file.transferTo(saveFile);
-			
-			Map<String,String> imageData = new HashMap<String,String>();
+
+			Map<String, String> imageData = new HashMap<String, String>();
 			imageData.put("codename", codename);
-			imageData.put("imgpath",reName);
-			
+			imageData.put("imgpath", reName);
+
 			rs = MainService.uploadProfileImage(imageData);
 			return rs;
-        } else {
-            return rs;
-        }
-    }
-	
+		} else {
+			return rs;
+		}
+	}
+
 	@PostMapping("getProfileImage")
 	@ResponseBody
-	public Map<String,ArrayList<ProfileImageDTO>> getProfileImage(HttpSession session) {
-		String codename = (String)session.getAttribute("codename");
-		Map<String,ArrayList<ProfileImageDTO>> getImagemap = new HashMap<String,ArrayList<ProfileImageDTO>>();
+	public Map<String, ArrayList<ProfileImageDTO>> getProfileImage(HttpSession session) {
+		String codename = (String) session.getAttribute("codename");
+		Map<String, ArrayList<ProfileImageDTO>> getImagemap = new HashMap<String, ArrayList<ProfileImageDTO>>();
 		getImagemap.put("profileImage", MainService.getProfileImage(codename));
-		
+
 		return getImagemap;
 	}
-	
-	
+
 	// 영선님 작업
 
 	@PostMapping("getOne")
@@ -116,12 +118,13 @@ public class MainController {
 		return getdto;
 
 	}
+
 	@PostMapping("getList")
 	@ResponseBody
 	public InvestigationDTO getList(String investigationName) {
 		InvestigationDTO getdto = MainService.getList(investigationName);
 		return getdto;
-		
+
 	}
 
 	@RequestMapping("updateInverstigation")
@@ -130,21 +133,44 @@ public class MainController {
 		int rs = MainService.updateInverstigation(dto);
 		return rs;
 	}
-	
+
 	@RequestMapping("complete")
 	@ResponseBody
 	public int complete(int idx) {
 		int rs = MainService.complete(idx);
 		return rs;
 	}
-	
+
 	@RequestMapping("cancel")
 	@ResponseBody
 	public int cancel(int idx) {
-		System.out.println("idx : " + idx);
 		int rs = MainService.cancel(idx);
-		System.out.println("rs : " + rs);
 
 		return rs;
 	}
+	
+	@PostMapping("boardList")
+	@ResponseBody
+	public List<BoardVO> boardList() {
+		List<BoardVO> getdto = MainService.boardList();
+		return getdto;
+		
+	}
+	
+	@RequestMapping("likeBtn")
+	@ResponseBody
+	public int likeBtn(int idx) {
+		int rs = MainService.likeBtn(idx);
+		return rs;
+	}
+	
+	@RequestMapping("reCommendBtn")
+	@ResponseBody
+	public int reCommendBtn(int idx) {
+		System.out.println("idx : " + idx);
+		int rs = MainService.reCommendBtn(idx);
+		System.out.println("rs : " + rs);
+		return rs;
+	}
+
 }

@@ -1,5 +1,7 @@
 package com.ggangdan.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +11,7 @@ import com.ggangdan.service.MemberService;
 
 @Service
 public class MemberServiceImpl implements MemberService {
-	
+
 	@Autowired
 	MemberMapper member;
 
@@ -23,7 +25,7 @@ public class MemberServiceImpl implements MemberService {
 			return dto;
 		}
 	}
-	
+
 	@Override
 	public int insert(MemberDTO dto) {
 		int rs = 0;
@@ -45,10 +47,10 @@ public class MemberServiceImpl implements MemberService {
 			return rs;
 		}
 	}
-	
+
 	@Override
 	public MemberDTO getOne(String id) {
-		MemberDTO dto = null;
+		MemberDTO dto = null; 
 		try {
 			dto = member.getOne(id);
 			return dto;
@@ -63,5 +65,4 @@ public class MemberServiceImpl implements MemberService {
 		int rs = 1;
 		return rs;
 	}
-
 }

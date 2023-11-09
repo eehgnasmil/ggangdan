@@ -12,7 +12,6 @@
 </head>
 <script>
 		$(function(){
-			/* var arr = []; */
 			var arr = ["깨갱..", "깽", "깡", "깨수깡", "깽스터"];
 			function getOne(){
 				var id = "<%=id%>";
@@ -79,7 +78,33 @@
 
 			</div>
 			<div class="board">
-				
+				<div class="board_list_box">
+					<%--<div class="board_box">
+						 <div class="pictureBox">
+							<img src="<%=request.getContextPath()%>/resources/imgs/test.jpg" alt="pic">
+						</div>
+						<div class="boardTextBox">
+							<div class="boardectBox">
+								<div class="ectBox">
+									<span class="b_inver"></span>
+									<span class="b_codename"></span>
+									<span class="b_date"></span>
+								</div>
+								<div class="ectBox">
+									<span class="b_liked"></span>
+									<span class="b_recommend"></span>
+								</div>
+							</div>
+							<div class="titleBox">
+								<span class="b_title"></span>
+							</div>
+							<div class="contentBox">
+								<span class="b_content"></span>
+								<span class="more">more</span>
+							</div>
+						</div>
+					</div> --%>
+				</div>
 			</div>
 			<div class="board"></div>
 		</div>

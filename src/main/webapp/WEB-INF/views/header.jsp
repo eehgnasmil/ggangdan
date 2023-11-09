@@ -19,6 +19,7 @@
 			String codename = (String)session.getAttribute("codename");
 	%>
 <script>
+		var contextPath = "<%=request.getContextPath()%>";
 		var id = <%=id%>;
 		var codename = <%=codename%>;
 

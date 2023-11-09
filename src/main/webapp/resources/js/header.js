@@ -1,3 +1,5 @@
+var dataValueIdx = "";
+
 function getInvestigation(idx) {
 	$.ajax({
 		url: "getInvestigation",
@@ -157,6 +159,7 @@ $(document).ready(function() {
 
 	$(document).on('click', '.investigation', function() {
 		var dataValue = $(this).data('value');
+		dataValueIdx = dataValue;
 		$('.investigation').css('background-color', 'transparent');
 		$(this).css('background-color', 'black');
 		$(this).css('border-radius', '10px');

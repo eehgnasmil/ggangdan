@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<update id="updateInverstigation" parameterType="InvestigationDTO">
-		update investigationslist set investigationName=#{investigationName} where codename=#{codename};
+		update investigationslist set investigationName=#{investigationName} where idx=#{idx};
 	</update>
 	
 	<select id="getList" parameterType="String" resultType="InvestigationDTO">
