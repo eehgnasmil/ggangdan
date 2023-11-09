@@ -83,7 +83,6 @@ public class MainController {
 			String[] uuids = uuid.toString().split("-");
 			String uniqueName = uuids[0];
 
-			System.out.println(originalFileName);
 			reName = uniqueName + fileExtension;
 			File saveFile = new File(imagePath, reName);
 			file.transferTo(saveFile);
@@ -113,8 +112,10 @@ public class MainController {
 
 	@PostMapping("getOne")
 	@ResponseBody
-	public MemberDTO getOne(MemberDTO dto) {
-		MemberDTO getdto = MemberService.getOne(dto.getId());
+	public MemberDTO getOne(HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		
+		MemberDTO getdto = MemberService.getOne(id);
 		return getdto;
 
 	}

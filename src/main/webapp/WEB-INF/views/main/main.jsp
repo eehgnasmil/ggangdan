@@ -44,7 +44,6 @@
 		
 		
 	</script>
-
 <body>
 	<div class="black_box">
 		<div class="changeName">

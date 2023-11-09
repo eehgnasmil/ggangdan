@@ -26,7 +26,7 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void insert(BoardVO vo) {
 		MultipartFile file = vo.getFile();
-		
+
 		if (file.isEmpty()) {
             // MultipartFile이 비어 있을 때, 대체 이미지 경로로 대체
             String defaultImagePath = "/resources/noimg.jpg";
@@ -68,7 +68,6 @@ public class BoardServiceImpl implements BoardService{
 				e.printStackTrace();
 			}
 		}
-		
 		board.insert(vo);
 
 	}
