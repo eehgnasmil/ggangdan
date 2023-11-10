@@ -31,9 +31,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from board order by idx desc limit 1;
 	</select>
 	
-	<update id="reCommendBtn" parameterType="int">
-		update board set
-		recommend = 1 where idx = #{idx};
+	<select id="getRecommend" parameterType="int" >
+		select recommend from board where idx=#{idx}
+	</select>
+	
+	<update id="updateRecommend" parameterType="int">
+		update board set recommend=true where idx= #{idx};
 	</update>
+	
+	<update id="deleteRecommend" parameterType="int">
+		update board set recommend=false where idx= #{idx};
+	</update>
+
 
 </mapper>

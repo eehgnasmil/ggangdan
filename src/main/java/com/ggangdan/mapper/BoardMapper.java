@@ -13,4 +13,7 @@ public interface BoardMapper {
 	List<BoardVO> boardList();
 	int reCommendBtn(int idx);
 	BoardVO getLast();
+	boolean getRecommend(int idx);
+	void updateRecommend(int idx);
+	void deleteRecommend(int idx);
 }

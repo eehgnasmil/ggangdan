@@ -16,9 +16,9 @@ function best(idx) {
 				} else {
 					best += '<img src="' + contextPath + '/resources/imgs/' + data.sfile + '" alt="pic">';
 				}
-				best += '</div>'
-				best += '<div class="boardTextBox">';
-				best += '<div class="boardectBox">';
+					best += '</div>'
+					best += '<div class="boardTextBox">';
+					best += '<div class="boardectBox">';
 					best += '<div class="ectBox">';
 					best += '<span class="b_inver">' + data.department + ' /</span>';
 					best += '<span class="b_codename">' + data.codename + ' /</span>';
@@ -28,11 +28,13 @@ function best(idx) {
 					best += '<span class="b_liked b_liked'+data.idx+'">0</span>';
 					best += '<span class="b_likedBtn" onclick="liked('+data.idx+')">좋아요</span>';
 					if(codename == data.icodename){
-						if (data.recommend == false) {
-							best += '<span class="b_recommend">추천</span>';
-						} else if (data.recommend == true) {
-							best += '<span class="b_recommend">추천받음</span>';
+						best += '<span class="b_recommend b_recommend'+data.idx+'" onclick="recommend('+data.idx+')">'
+						if(data.recommend == true){
+							best += '추천안함';	
+						} else {
+							best += '추천'
 						}
+						best += '</span>'
 					}
 					best += '</div>';
 					best += '</div>';
@@ -47,7 +49,7 @@ function best(idx) {
 					best += '</div>';
 			}
 			$('.best_board').html(best);
-			likedCount()
+			likedCount();
 				
 		},
 		error: function(xhr, status, error) {
@@ -56,25 +58,7 @@ function best(idx) {
 	})
 }
 
-
-function liked(idx) {
-	$.ajax({
-		type: "POST",
-		url: "liked",
-		data: {idx:idx},
-		dataType: "json",
-		success: function(data) {
-			$('.b_liked'+idx).html(data);
-			best(dataValueIdx)
-		},
-		error: function(xhr, status, error) {
-			console.log(xhr, status, error);
-		}
-	});
-};
-
 function likedCount() {
-    console.log('test');
     $.ajax({
         type: "POST",
         url: "likedCount",
@@ -91,6 +75,44 @@ function likedCount() {
         }
     });
 }
+
+
+function liked(idx) {
+	$.ajax({
+		type: "POST",
+		url: "liked",
+		data: {idx:idx},
+		dataType: "json",
+		success: function(data) {
+			$('.b_liked'+idx).html(data);
+			console.log(dataValueIdx);
+			best(dataValueIdx);
+		},
+		error: function(xhr, status, error) {
+			console.log(xhr, status, error);
+		}
+	});
+};
+
+function recommend(idx){
+ 	$.ajax({
+		type: "POST",
+		url: "getRecommend",
+		data: {idx:idx},
+		dataType: "json",
+		success: function(data) {	
+			boardList(dataValueIdx);
+			best(dataValueIdx);
+			
+		},
+		error: function(xhr, status, error) {
+			console.log(xhr, status, error);
+		}
+	});
+}
+
+
+
 
 //
 
@@ -227,11 +249,13 @@ function boardList(idx) {
 					boList += '<span class="b_liked b_liked'+dto[i].idx+'">0</span>';
 					boList += '<span class="b_likedBtn" onclick="liked('+dto[i].idx+')">좋아요</span>';
 					if(codename == dto[i].icodename){
-						if (dto[i].recommend == false) {
-							boList += '<span class="b_recommend">추천</span>';
-						} else if (dto[i].recommend == true) {
-							boList += '<span class="b_recommend">추천받음</span>';
+						boList += '<span class="b_recommend b_recommend'+dto[i].idx+'" onclick="recommend('+dto[i].idx+')">'
+						if(dto[i].recommend == true){
+							boList += '추천안함';	
+						} else {
+							boList += '추천'
 						}
+						boList += '</span>'
 					}
 					boList += '</div>';
 					boList += '</div>';
@@ -263,6 +287,8 @@ function reCommendBtn(idx, iidx) {
 
 $(document).ready(function() {
 	boardList(dataValueIdx);
+	best(dataValueIdx);
+	likedCount();
 	
 	if (dataValueIdx == 0) {
 		$(".rename").prop("disabled", true);

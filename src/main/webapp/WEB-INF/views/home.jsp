@@ -50,6 +50,7 @@ body {
         background-size: cover;
         background-repeat: no-repeat;
     }
+    
 </style>
 <body>
 <div class="main">

@@ -72,7 +72,6 @@ public class BoardController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		BoardVO board = boardService.getBest(iidx);
 		map.put("board", board);
-		System.out.println(board.getIidx());
 		return map;
 	}
 	
@@ -86,7 +85,6 @@ public class BoardController {
 		like.setCodename(codename);
 		like.setBidx(bidx);		
 		
-		System.out.println(likedService.getOne(like));
 		if(likedService.getOne(like) == null) {
 			likedService.insert(like);
 		} else {
@@ -105,4 +103,17 @@ public class BoardController {
 		return like;
 	}
 
+	@PostMapping("getRecommend")
+	@ResponseBody
+	public boolean getRecommend(@RequestParam("idx") int idx) {
+		if( boardService.getRecommend(idx) == true ) {
+			boardService.deleteRecommend(idx);
+		} else {
+			boardService.updateRecommend(idx);
+		}
+		boolean recommend = boardService.getRecommend(idx);
+		
+		return recommend;
+	}
 }
+

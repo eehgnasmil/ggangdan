@@ -76,4 +76,21 @@ public class BoardServiceImpl implements BoardService {
 		return board.getLast();
 	}
 
+	@Override
+	public boolean getRecommend(int idx) {
+		return board.getRecommend(idx);
+	}
+
+	@Override
+	public void updateRecommend(int idx) {
+		board.updateRecommend(idx);
+		
+	}
+
+	@Override
+	public void deleteRecommend(int idx) {
+		board.deleteRecommend(idx);
+		
+	}
+
 }

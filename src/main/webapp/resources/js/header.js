@@ -30,7 +30,7 @@ function getInvestigation(idx) {
 				$(".cancel").prop("disabled", true);
 			};
 			$('.investigationName').html(str);
-			best(data.idx);
+			
 		},
 		error: function(xhr, status, error) {
 			console.log(xhr, status, error);
