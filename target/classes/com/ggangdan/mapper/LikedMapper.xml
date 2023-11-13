@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ggangdan.mapper.LikedMapper">
+
+	<insert id="insert" parameterType="likedDTO">
+		insert into liked(bidx,codename) values(#{bidx},#{codename});
+	</insert>
+	
+	<delete id="delete" parameterType="likedDTO">
+		delete from liked where bidx=#{bidx} and codename=#{codename};
+	</delete>
+	
+	<select id="getCount" parameterType="int" resultType="int">
+		select count(*) count from liked where bidx = #{bidx};
+	</select>
+
+	<select id="getAllCount" resultType="likedDTO">
+		select bidx,count(bidx) count from liked group by bidx;
+	</select>
+	
+	<select id="getOne" parameterType="likedDTO" resultType="likedDTO">
+		select * from liked where bidx = #{bidx} and codename= #{codename};
+	</select>
+
+</mapper>

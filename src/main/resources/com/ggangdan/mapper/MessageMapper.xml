@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ggangdan.mapper.MessageMapper">
+	<insert id="insertMessage" parameterType="messageDTO">
+		insert into
+		message(boardidx,id,codename,content) values
+		(#{boardidx},#{id},#{codename},#{content});
+	</insert>
+
+	<select id="getMessage" parameterType="int"
+		resultType="messageDTO">
+		SELECT
+		msg.idx,msg.boardidx,msg.id,msg.codename,m.department,msg.content,msg.senddate
+		FROM message AS msg
+		JOIN member AS m ON msg.codename = m.codename
+		WHERE msg.boardidx = #{boardidx}
+		ORDER BY msg.idx;
+	</select>
+
+</mapper>
