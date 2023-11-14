@@ -47,13 +47,11 @@ function getProfileImage() {
 function uploadFile() {
 	var fileInput = document.getElementById("fileInput");
 	var allowedFileTypes = ["image/jpeg", "image/png", "image/gif"]; // 허용할 이미지 파일 유형 목록
-
 	if (fileInput.files.length > 0) {
-		if (allowedFileTypes.includes(fileInput.type)) {
-			var file = fileInput.files[0];
-			var formData = new FormData();
-			formData.append("file", file);
-
+		var file = fileInput.files[0];
+		var formData = new FormData();
+		formData.append("file", file);
+		if (allowedFileTypes.includes(file.type)) {
 			$.ajax({
 				type: "POST",
 				url: "uploadFile", // 컨트롤러의 URL
@@ -61,6 +59,7 @@ function uploadFile() {
 				contentType: false,
 				processData: false,
 				success: function(response) {
+					console.log(response);
 					if (response == 1) {
 						$('#fileInput').val("");
 					}
@@ -69,11 +68,25 @@ function uploadFile() {
 			$('.fileName').text("원하는 프로필 사진을 첨부해주세요.");
 			getProfileImage();
 		} else {
-			alert("이미지파일을 선택해주세요");
 			$('.fileName').text("원하는 프로필 사진을 첨부해주세요.");
 		}
 	} else {
-		alert("파일을 선택하세요.");
+		Swal.fire('등록 실패', '파일을 선택하세요.', 'error');
+	}
+}
+
+function checkProfileType(input) {
+	var file = input.files[0]; // 첫 번째 파일을 가져옵니다.
+	if (file) {
+		var allowedFileTypes = ["image/jpeg", "image/png", "image/gif"]; // 허용할 이미지 파일 유형 목록
+
+		if (allowedFileTypes.includes(file.type)) {
+
+		} else {
+			// 허용되지 않는 파일 유형일 경우
+			Swal.fire('파일 업로드 실패', '이미지 파일을 선택해주세요.', 'error');
+			input.value = ""; // 파일 입력 필드 초기화
+		}
 	}
 }
 

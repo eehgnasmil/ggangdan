@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     
     <script src="<%=request.getContextPath() %>/resources/js/join.js"></script>
-   
+   	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <style>
     body {

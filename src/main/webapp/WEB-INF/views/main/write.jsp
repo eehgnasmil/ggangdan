@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/main/board.css">
 <script type="text/javascript"	src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="<%=request.getContextPath() %>/resources/js/main/board.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
 $(document).ready(function() { 
 	getInvestigation(${iidx})

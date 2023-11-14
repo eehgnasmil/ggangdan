@@ -10,6 +10,7 @@
 <script src="<%=request.getContextPath() %>/resources/js/forget.js"></script>
 
 <link rel="stylesheet"href="<%=request.getContextPath() %>/resources/css/forget.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <title>GGANGDAN</title>
 </head>
 <style>

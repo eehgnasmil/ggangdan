@@ -49,6 +49,10 @@ body {
    font-family: 'neurimboGothicRegular';
 }
 
+ .alerttext {
+	font-family: 'GmarketSansMedium';
+}
+
 input, button {
    border: none;
    outline: none;

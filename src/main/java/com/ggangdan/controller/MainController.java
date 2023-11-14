@@ -97,7 +97,7 @@ public class MainController {
 			Map<String,String> imageData = new HashMap<String,String>();
 			imageData.put("codename", codename);
 			imageData.put("imgpath",reName);
-			
+			System.out.println(imageData);
 			rs = MainService.uploadProfileImage(imageData);
 			return rs;
         } else {

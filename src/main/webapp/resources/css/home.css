@@ -1,7 +1,20 @@
+@font-face {
+	font-family: 'GmarketSansMedium';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
 .main {
     justify-content: center;
     height: 65vh; /* 화면 높이의 100%만큼 가운데 정렬합니다. */
   }
+  
+ .alerttext {
+	font-family: 'GmarketSansMedium';
+}
 
   .keyboard {
     color: #fff;

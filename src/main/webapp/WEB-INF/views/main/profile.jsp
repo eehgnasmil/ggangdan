@@ -14,7 +14,8 @@
 			<div class="selectimg hidden">
 				<div class="profilImglist"></div>
 				<div class="profileupload">
-					<input type="file" id="fileInput" style="display: none;"> <label
+					<input type="file" id="fileInput" accept="image/*" style="display:none;" onchange="checkProfileType(this);">
+					<label
 						for="fileInput" class="custom-file-button">파일 선택</label> <span
 						class="fileName">원하는 프로필 사진을 첨부해주세요.</span>
 					<Button class="imageUpload">등록</Button>

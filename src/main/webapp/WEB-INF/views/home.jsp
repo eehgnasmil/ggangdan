@@ -11,37 +11,47 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/home.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="<%=request.getContextPath() %>/resources/js/home.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
-	$().ready(function(){
-		function login(){
-			var id = $('#id').val();
-			var pw = $('#login-pass').val();
-			const params = {id:id, pw:pw};
-			$.ajax({
-				type:"POST",
-				url: "login",
-				data: params,
-				dataType: "json",
-				success: function(dto) {
-					if(dto == 0) {
-						alert("아이디 또는 비밀번호를 잘못입력하셨습니다");
-						location.href = "<%=request.getContextPath() %>";
-					} else {
-						location.href = "<%=request.getContextPath()%>/main/main";
-					}
-				},
-				error: function(xhr, status, error){
-					console.log(xhr, status, error);
-				}
-			});
-		};
-		
-		$(function(){
-			$('.login__button').click(function(){
-				login();
-			})
-		})
-	})
+   $().ready(function(){
+      function login(){
+         var id = $('#id').val();
+         var pw = $('#login-pass').val();
+         const params = {id:id, pw:pw};
+         $.ajax({
+            type:"POST",
+            url: "login",
+            data: params,
+            dataType: "json",
+            success: function(dto) {
+               if(dto == 0) {
+                  Swal.fire({
+                       title: '<span class=\"alerttext\">로그인 실패</span>',
+                       html: '<span class=\"alerttext\">아이디 혹은 비밀번호를 다시 확인해주세요.</span>',
+                       icon: 'error',
+                       confirmButtonText: 'OK',
+                   }).then((result) => {
+                       if (result.isConfirmed) {
+                           // 확인 버튼을 눌렀을 때 이동하고자 하는 URL로 변경
+                           window.location.href = "<%=request.getContextPath() %>";
+                       }
+                   });
+               } else {
+                  location.href = "<%=request.getContextPath()%>/main/main";
+               }
+            },
+            error: function(xhr, status, error){
+               console.log(xhr, status, error);
+            }
+         });
+      };
+      
+      $(function(){
+         $('.login__button').click(function(){
+            login();
+         })
+      })
+   })
 
 </script>
 <style>

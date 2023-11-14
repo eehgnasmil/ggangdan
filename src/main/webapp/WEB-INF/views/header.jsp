@@ -14,6 +14,7 @@
 	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
 	crossorigin="anonymous"></script>
 <script src="<%=request.getContextPath() %>/resources/js/header.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <%
 			String id = (String)session.getAttribute("id");
 			String codename = (String)session.getAttribute("codename");
