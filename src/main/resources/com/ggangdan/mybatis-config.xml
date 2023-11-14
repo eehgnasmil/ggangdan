@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.ggangdan.dto.MemberDTO" alias="memberDTO"/>
+		<typeAlias type="com.ggangdan.dto.InvestigationDTO" alias="investigationDTO"/>
+		<typeAlias type="com.ggangdan.dto.ProfileImageDTO" alias="profileImageDTO"/>
+		<typeAlias type="com.ggangdan.dto.MessageDTO" alias="messageDTO"/>
+		<typeAlias type="com.ggangdan.dto.BoardVO" alias="boardVO"/>
+		<typeAlias type="com.ggangdan.dto.LikedDTO" alias="likedDTO"/>
+		<typeAlias type="com.ggangdan.dto.PopularInvestigationDTO" alias="popularInvestigationDTO"/>
+		<typeAlias type="com.ggangdan.dto.FavoritesDTO" alias="favoritesDTO"/>
+	</typeAliases>
+</configuration>

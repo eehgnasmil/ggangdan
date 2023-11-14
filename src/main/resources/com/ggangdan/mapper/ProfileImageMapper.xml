@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ggangdan.mapper.ProfileImageMapper">
+	<insert id="uploadProfileImage" parameterType="Map">
+		insert into profileImage(codename,imgpath) values (#{codename},#{imgpath});
+	</insert>
+		
+	<select id="getProfileImage" parameterType="String" resultType="profileImageDTO">
+		select * from profileImage where codename = #{codename};
+	</select>
+	
+	<update id="resetUseImage" parameterType="String">
+		update profileImage set useimg = 0 where codename = #{codename};
+	</update>
+	
+	<update id="selectUseImage" parameterType="Map">
+		update profileImage set useimg = 1 where imgpath = #{imgpath} and codename = #{codename};
+	</update>
+	
+	<select id="getUseImage" parameterType="String" resultType="profileImageDTO">
+		select * from profileImage where codename = #{codename} and useimg = 1;
+	</select>
+</mapper>

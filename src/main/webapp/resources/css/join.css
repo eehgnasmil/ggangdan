@@ -1,0 +1,253 @@
+@font-face {
+    font-family: 'neurimboGothicRegular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/neurimboGothicRegular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --white-color: hsl(0, 0%, 100%);
+    --black-color: hsl(0, 0%, 0%);   
+ }
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+    font-family: 'neurimboGothicRegular';
+}
+
+body {
+   display: grid;
+   place-content: center;
+   min-height: 100vh;
+   background: #000;
+    color: var(--white-color);
+}
+
+.join_container {
+    display: flex;
+}
+
+.select-department {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+}
+.container {
+    padding: 20px;
+   position: relative;
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   gap: 1em;
+   width: 800px;
+   height: 500px;
+   transition: all 400ms;
+}
+
+.join_contents {
+    flex: 1;
+    padding-left: 100px;
+}
+
+.container .box{
+    filter: grayscale(100%) opacity(50%);
+}
+.container:hover .box {
+   filter: grayscale(100%) opacity(50%);
+}
+
+.box {
+   position: relative;
+   background: var(--img) center center;
+   background-size: cover;
+   transition: all 400ms;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+    cursor: pointer;
+    font-family: 'GmarketSansMedium';
+}
+
+.container .box:hover {
+   filter: grayscale(0%) opacity(100%);
+}
+
+.box:nth-child(odd) {
+   transform: translateY(-16px);
+}
+
+.box:nth-child(even) {
+   transform: translateY(16px);
+}
+
+.box::after {
+   content: attr(data-text);
+   position: absolute;
+   bottom: 20px;
+   background: #000;
+   color: #fff;
+   padding: 10px 10px 10px 14px;
+   letter-spacing: 4px;
+   transform: translateY(60px);
+   opacity: 0;
+   transition: all 400ms;
+}
+
+.departmentText {
+   font-family: 'GmarketSansMedium';
+   position:absolute;
+   bottom: 20%;
+   overflow: hidden;   
+}
+
+.fade {
+   animation : fadein 400ms ease-in-out;
+}
+
+@keyframes fadein{
+  0% {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+
+}
+
+.box.active::after {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.box:hover::after {
+   transform: translateY(0);
+   opacity: 1;
+   transition-delay: 400ms;
+}
+
+/* 회원가입 영역*/
+
+input, button {
+   font-size: var(--normal-font-size);
+   font-family: var(--body-font);
+}
+
+input, button {
+   border: none;
+   outline: none;
+}
+
+.join {
+   position: relative;
+   height: 100vh;
+   display: grid;
+   align-items: center;
+}
+
+.join__form {
+   position: relative;
+   background-color: hsla(0, 0%, 10%, 0.2);
+   border: 2px solid var(--white-color);
+   margin-inline: 1.5rem;
+   padding: 2.5rem 1.5rem;
+   border-radius: 1rem;
+   backdrop-filter: blur(10px);
+}
+
+.join__title {
+   text-align: center;
+   font-size: var(--h1-font-size);
+   font-weight: var(--font-medium);
+   margin-bottom: 2rem;
+}
+
+.join__content, .join__box {
+   display: grid;
+}
+
+.join__content {
+   row-gap: 1.75rem;
+   margin-bottom: 1.5rem;
+}
+
+.join__box {
+   grid-template-columns: max-content 1fr;
+   align-items: center;
+   column-gap: 0.75rem;
+   border-bottom: 2px solid var(--white-color);
+}
+
+.join__input {
+   width: 100%;
+   padding-block: 0.8rem;
+   background: none;
+   color: var(--white-color);
+   position: relative;
+   z-index: 1;
+}
+
+.join__box-input {
+   position: relative;
+}
+
+.join__label {
+   position: absolute;
+   left: 0;
+   top: 13px;
+   font-weight: var(--font-medium);
+   transition: top 0.3s, font-size 0.3s;
+}
+
+.join__box:nth-child(2) input{
+   padding-right: 1.8rem;
+}
+
+.join__button {
+   width: 100%;
+   padding: 1rem;
+   border-radius: 0.5rem;
+   background-color: var(--white-color);
+   font-weight: var(--font-medium);
+   cursor: pointer;
+   margin-bottom: 1rem;
+}
+
+.join__button:hover {
+   background-color:#EAEAEA;
+   color:black;
+}
+
+.join__input:focus + .join__label {
+   top: -12px;
+   font-size: var(--small-font-size);
+}
+
+.join__input:not(:placeholder-shown).join__input:not(:focus) + .join__label {
+   top: -12px;
+   font-size: var(--small-font-size);
+}
+
+@media screen and (min-width: 576px) {
+   .join {
+      justify-content: center;
+   }
+   .join__form {
+      width: 432px;
+      padding: 4rem 3rem 3.5rem;
+      border-radius: 1.5rem;
+   }
+   .join__title {
+      font-size: 2rem;
+   }
+}

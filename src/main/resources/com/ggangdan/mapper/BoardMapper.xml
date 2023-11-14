@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ggangdan.mapper.BoardMapper">
+
+   <insert id="insert" parameterType="boardVO">
+      insert into board(iidx,
+      codename ,title,content,ofile,sfile)
+      values(#{iidx},#{codename},#{title},#{content},#{ofile},#{sfile});
+   </insert>
+
+   <select id="getBest" parameterType="int"
+      resultType="boardVO">
+      select a3.* , m.department, i.codename icodename from investigationslist i , member m ,
+   (select b.*, a2.bidx, a2.count, a2.codename lcodename  from board b , 
+   (select a.count, l.codename, a.bidx from liked l , (SELECT bidx, COUNT(bidx) as count FROM liked
+   GROUP BY bidx) a where l.bidx=a.bidx order by count desc) a2 
+   where b.idx=a2.bidx order by count desc) a3
+   where a3.iidx = i.idx and i.codename = m.codename and i.idx=#{iidx} order by count desc;
+   </select>
+
+   <select id="boardList" parameterType="String"
+      resultType="BoardVO">
+      select b.*, m.department , m.codename mcodename, f.codename
+      lcodename, i.codename icodename from board b
+      inner join member m on b.codename =m.codename
+      inner join investigationslist i on b.iidx = i.idx
+      left join (select * from liked l where codename = #{codename}) f
+      on b.idx = f.bidx order by b.idx desc;
+   </select>
+
+   <select id="getLast" resultType="boardVO">
+      select * from board order by idx
+      desc limit 1;
+   </select>
+
+   <select id="getRecommend" parameterType="int">
+      select recommend
+      from board where idx=#{idx}
+   </select>
+
+   <update id="updateRecommend" parameterType="int">
+      update board set
+      recommend=true where idx= #{idx};
+   </update>
+
+   <update id="deleteRecommend" parameterType="int">
+      update board set
+      recommend=false where idx= #{idx};
+   </update>
+   
+   <select id="getInvestigationRate" parameterType = "int" resultType="double">
+   	SELECT 
+    (SELECT COUNT(*) FROM board WHERE iidx = #{iidx} AND recommend = 1 GROUP BY recommend) /
+    (SELECT COUNT(*) FROM board WHERE iidx = #{iidx} ) AS result;
+   </select>
+</mapper>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ggangdan.mapper.InvestigationMapper">
+	<select id="getInvestigationList" parameterType="String" resultType="InvestigationDTO">
+		select i.idx,f.idx fidx,i.investigationName,i.codename,i.complete from investigationslist i left join (select * from favorites where codename = #{codename}) f on i.idx = f.boardidx order by f.idx desc,i.idx desc;
+	</select>
+
+	<select id="getInvestigation" parameterType="int"
+		resultType="InvestigationDTO">
+		select * from investigationslist where idx=#{idx};
+	</select>
+
+	<insert id="insertInvestigation" parameterType="Map">
+		insert into
+		investigationslist(investigationName,codename) values
+		(#{investigationName},#{codename});
+	</insert>
+
+	<update id="updateInverstigation"
+		parameterType="InvestigationDTO">
+		update investigationslist set
+		investigationName=#{investigationName} where idx=#{idx};
+	</update>
+
+	<select id="getList" parameterType="String"
+		resultType="InvestigationDTO">
+		select * from investigationslist where
+		investigationName=#{investigationName};
+	</select>
+
+	<update id="complete" parameterType="int">
+		update investigationslist
+		set complete= 1 where idx=#{idx};
+	</update>
+
+	<update id="cancel" parameterType="int">
+		delete from investigationslist
+		where idx = #{idx};
+	</update>
+
+	<select id="popularInvestigation"
+		resultType="popularInvestigationDTO">
+		select b.iidx,count(*) count,i.investigationName,i.codename
+		from board b,
+		(select idx,investigationName,codename from investigationslist where complete
+		= 0) as i
+		where i.idx = b.iidx group by b.iidx,i.investigationName,i.codename order
+		by count desc limit 10;
+	</select>
+	
+	<select id="getComplete" resultType="int">
+		select idx from investigationslist where complete = 1;
+	</select>
+</mapper>
