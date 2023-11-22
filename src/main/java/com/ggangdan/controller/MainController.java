@@ -14,15 +14,19 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ggangdan.dto.BoardVO;
 import com.ggangdan.dto.InvestigationDTO;
 import com.ggangdan.dto.MemberDTO;
+import com.ggangdan.dto.PagingDTO;
 import com.ggangdan.dto.PopularInvestigationDTO;
 import com.ggangdan.dto.ProfileImageDTO;
 import com.ggangdan.service.HeaderService;
@@ -62,7 +66,7 @@ public class MainController {
 	@RequestMapping("getInvestigation")
 	@ResponseBody
 	public InvestigationDTO getInvestigation(int idx) {
-
+		
 		return MainService.getInvestigation(idx);
 	}
 	
@@ -184,12 +188,190 @@ public class MainController {
 		return rs;
 	}
 
-	@PostMapping("boardList")
+	@RequestMapping("boardList")
 	@ResponseBody
-	public List<BoardVO> boardList(HttpSession session) {
-		String codename = (String) session.getAttribute("codename");
-		List<BoardVO> getdto = MainService.boardList(codename);
-		return getdto;
+	public int boardList(                               
+			Integer idx,
+	        @RequestParam(defaultValue = "") String selectVal, 
+	        @RequestParam(defaultValue = "") String searchInput
+	) {
+	    Map<String, Object> map = new HashMap<>();
+
+	    map.put("idx", idx);
+	    map.put("selectVal", ("".equals(selectVal) ? null : selectVal));
+	    map.put("searchInput", ("".equals(searchInput) ? null : searchInput));
+	    
+	    int getdto = MainService.boardList(map);
+	    return getdto;
+	}
+	
+	@RequestMapping("loadList")
+	@ResponseBody
+	public List<BoardVO> loadList(
+	    Model model,
+	    @RequestParam(defaultValue = "0") int page,
+	    @RequestParam(defaultValue = "5") int itemsPerPage,
+	    int idx,
+	    @RequestParam(defaultValue = "") String selectVal,
+	    @RequestParam(defaultValue = "") String searchInput
+	) {
+	    Map<String, Object> map = new HashMap<String, Object>();
+	    List<BoardVO> getdto = null;
+	    
+	    map.put("page", page);
+	    map.put("itemsPerPage", itemsPerPage);
+	    map.put("idx", idx);
+	    map.put("selectVal", ("".equals(selectVal) ? null : selectVal));
+	    map.put("searchInput", ("".equals(searchInput) ? null : searchInput));
+	    getdto = MainService.loadList(map);
+	    
+	    model.addAttribute("getdto", getdto);
+	    return getdto;
+	}
+	
+	@RequestMapping("paging")
+	@ResponseBody
+	public PagingDTO paging(Model model , Map<String, Integer> map ,Integer page,Integer total) {
+		System.out.println("page : " + page);
+		System.out.println("total : " + total);
+		map = new HashMap<String, Integer>();
+		Integer startPage = 1;
+		Integer middlePage = 1;
+		Integer nextPage = 1;
+		Integer prevPage = 1;
+		Integer endPage = 0; // 페이지 수
+		
+		// 전체 수의 나머지가 있을때는 + 1 페이지 더 추가
+		if(total % 5 == 0) {
+			endPage = total / 5;
+		} else {
+			endPage = (total / 5) + 1;
+		}
+		
+		if(endPage > 5) {
+			if(total % 5 == 0) {
+				// 전체가 5로 딱 떨어짐
+				if(page <=5) {
+					startPage = 1;
+					middlePage = startPage + 4;
+				} else if((endPage - page) < 1) {
+					Integer startP = endPage / 5;
+					startPage = startPage + (5* startP);
+					middlePage = endPage;
+				} else {
+					startPage = startPage + 5;
+					middlePage = startPage + 4;
+				}
+			} else {
+				// 전체가 5로 딱 떨어지지 않음
+				if(page <=5) {
+					startPage = 1;
+					middlePage = startPage + 4;
+				}
+				else if(((page -1) %5 == 0 && (endPage - page) >= 1) || ((page < page + 5) && (endPage - page) >= 1)) {
+					startPage = startPage + 5;
+					middlePage = startPage + 4;
+				}
+				else if((page %5 != 0) && ((endPage - page) < 1)) {
+					Integer startP = endPage / 5;
+					startPage = startPage + 5;
+					middlePage = endPage;
+				}
+			}
+		}
+		else {
+			startPage = 1;
+			middlePage = endPage;
+		}
+		
+		//////////
+
+		if(total > 5 || total % 5 == 0) {
+			if (total % 5 == 0) {
+				if(page == endPage) {
+					nextPage = endPage;
+				} else if (page == middlePage) {
+					if((endPage - page) < 5) {
+						nextPage = endPage;
+					} else {
+						nextPage = page+1;
+					}
+				} else nextPage = page+1;
+			} else {
+				if(page == endPage) {
+					nextPage = endPage;
+				} else {
+					nextPage = page+1;
+				}
+			}
+		} else {
+			nextPage = 1;
+		}
+		
+		if(total > 5 || total % 5 == 0) {
+			prevPage = page-1;
+			if (total % 5 == 0) {
+			} else {
+				prevPage = page-1;
+				if(page == 1) {
+					prevPage = 1;
+				} else {
+					prevPage = page-1;
+					if(page %5 == 0) {
+						if(prevPage == 0) prevPage = 1;
+					}
+				}
+			}
+		} else {
+			prevPage = 1;
+		}
+		
+		
+		// page이 null 또는 total이 null / page가 0보다 작거나 total보다 클때
+		if(page == null || page < 0) {
+			page = 1;
+		}
+		if(total == null) {
+			total = 1; 
+		}
+		if(page > total) {
+			page = total;
+		}
+		
+		// total이 == 0일때 
+		if(total == 0) {
+			page = 1;
+			startPage = 1;
+			endPage = 1;
+		}
+		
+		PagingDTO dto = new PagingDTO();
+		dto.setCurrentPage(page);
+		dto.setTotalCount(total);
+		dto.setEndPage(endPage);
+		dto.setStartPage(startPage);
+		dto.setMiddlePage(middlePage);
+		dto.setNextPage(nextPage);
+		dto.setPrevPage(prevPage);
+		
+		System.out.println("dto : " + dto);
+		System.out.println("//////////////");
+		
+		return dto;
+	}
+	
+	////////////랭킹/////////////////////
+		
+	@PostMapping("getallranklist")
+	@ResponseBody
+	public ArrayList<MemberDTO> getallranklist(HttpSession session) {
+	return MemberService.getallranklist();
+	}
+	
+	@PostMapping("getdepartmentranklist")
+	@ResponseBody
+	public ArrayList<MemberDTO> getdepartmentranklist(String id) {
+	return MemberService.getdepartmentranklist(id);
 	}
 	
 }

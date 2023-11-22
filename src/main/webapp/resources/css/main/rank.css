@@ -1,0 +1,127 @@
+* {
+	font-family: 'GmarketSansMedium';
+}
+
+body {
+	font-family: 'GmarketSansMedium';
+	background-color: #272829;
+}
+
+.ranking {
+	justify-content: center;
+	align-items: center;
+}
+
+.rankingcontainer {
+	width: 50%;
+	margin: auto;
+}
+
+.Rank {
+	padding: 20px;
+	width: 96%;
+	background-color: #45474B;
+	text-align: center;
+	margin-bottom: 20px;
+	border-radius: 10px;
+	text-align: center;
+	color: #fff;
+}
+
+/* 랭킹 옵션 컨테이너 */
+.RackOption {
+	width: 100%;
+	margin: auto; display : grid;
+	grid-template-columns: repeat(2, 1fr);
+	margin-bottom: 10px;
+	display: grid;
+}
+
+/* 전체 랭킹 및 부서 랭킹 스타일 */
+.alltext, .departmenttext {
+    cursor: pointer;
+    padding: 10px;
+    margin: auto;
+    font-weight: bold;
+    color: #fff;
+    background: #333;
+    border-radius: 5px;
+    width: 93%;
+}
+
+/* 선택된 랭킹 옵션에 대한 스타일 */
+.alltext:hover, .departmenttext:hover {
+	background: #EAEAEA;
+    color: #333;
+}
+
+/* 랭킹 리스트 컨테이너 */
+.ranklist {
+	padding: 20px 20px 10px 10px;
+	background: #333;
+	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: auto;
+	width: 95%;
+}
+
+/* 랭크 리스트 헤더 스타일 */
+.ranklistheader ul {
+	list-style-type: none;
+	padding: 0;
+	display: flex;
+}
+
+.ranklistheader li {
+	flex: 1;
+	padding: 10px;
+	text-align: center;
+	font-weight: bold;
+	width: 100px;
+}
+
+.myrank {
+	margin: auto;
+}
+
+.myrank ul {
+	background: #EAEAEA;
+	color: #333;
+	list-style-type: none;
+	padding: 5px;
+	display: flex;
+	border-radius: 5px;
+}
+
+.myrank li {
+	flex: 1;
+	padding: 10px;
+	text-align: center;
+	font-weight: bold;
+	width: 100px;
+}
+
+/* 랭크 리스트 박스 스타일 */
+.allranklist, .departmentranklist {
+	display: none; /* 초기에는 감춰짐 */
+	margin-bottom: 10px;
+	background: #333;
+	border-radius: 0 0 5px 5px;
+}
+
+/* 랭크 리스트 내용을 담는 박스 스타일 */
+.allranklist ul, .departmentranklist ul {
+	list-style-type: none;
+	padding: 0;
+	display: flex;
+	margin: 0;
+}
+
+.allranklist li, .departmentranklist li {
+	flex: 1;
+	padding: 10px;
+	text-align: center;
+	width: 100px;
+}

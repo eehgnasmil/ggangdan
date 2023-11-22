@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.servlet.ModelAndView;
+
 import com.ggangdan.dto.BoardVO;
 import com.ggangdan.dto.InvestigationDTO;
+import com.ggangdan.dto.PagingDTO;
 import com.ggangdan.dto.PopularInvestigationDTO;
 import com.ggangdan.dto.ProfileImageDTO;
 
@@ -23,5 +26,6 @@ public interface MainService {
 	ProfileImageDTO getUseImage(String codename);
 	///////////////////
 	int selectUseImage(Map<String,String> map);
-	List<BoardVO> boardList(String codename);
+	int boardList(Map<String,Object> map);
+	List<BoardVO> loadList(Map<String,Object> map); 
 }

@@ -1,5 +1,7 @@
 package com.ggangdan.serviceImpl;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -66,6 +68,18 @@ public class MemberServiceImpl implements MemberService {
 	
 	public int WriteBoard(String codename) {
 		return member.WriteBoard(codename);
+	}
+	
+	// rank
+	@Override
+	public ArrayList<MemberDTO> getallranklist() {
+		return member.getallranklist();
+	}
+
+	@Override
+	public ArrayList<MemberDTO> getdepartmentranklist(String id) {
+		MemberDTO dto = member.getOne(id);
+		return member.getdepartmentranklist(dto.getDepartment());
 	}
 
 }

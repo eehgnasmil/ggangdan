@@ -24,24 +24,28 @@ function insert() {
       Swal.fire('<span class="alerttext">회원가입 실패</span>','<span class="alerttext">부서를 선택해주세요</span>','error');
       event.preventDefault();
    } else {
-      const params = { id: id, pw: pw, codename: codename, department: department };
-      $.ajax({
-         type: "POST",
-         url: "join",
-         data: params,
-         dataType: "json",
-         success: function(rs) {
-            if (rs == 1) {
-               location.href = "./";
-            } else {
-               Swal.fire('<span class="alerttext">회원가입 실패</span>','<span class="alerttext">이미 존재하는 아이디입니다</span>','error');
-               event.preventDefault();
-            }
-         },
-         error: function(xhr, status, error) {
-            console.log(xhr, status, error);
-         }
-      });
+		if(pw === pwCheck){
+	      const params = { id: id, pw: pw, codename: codename, department: department };
+	      $.ajax({
+	         type: "POST",
+	         url: "join",
+	         data: params,
+	         dataType: "json",
+	         success: function(rs) {
+	            if (rs == 1) {
+	               location.href = "./";
+	            } else {
+	               Swal.fire('<span class="alerttext">회원가입 실패</span>','<span class="alerttext">이미 존재하는 아이디입니다</span>','error');
+	               event.preventDefault();
+	            }
+	         },
+	         error: function(xhr, status, error) {
+	            console.log(xhr, status, error);
+	         }
+	      });
+	    } else {
+			alert("비밀번호를 확인해주세요");
+		}
    }
 };
 

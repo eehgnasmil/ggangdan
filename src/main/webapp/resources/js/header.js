@@ -118,7 +118,7 @@ $(document).ready(function() {
 	$(document).on('click', '.investigation', function() {
 		var dataValue = $(this).data('value');
 		dataValueIdx = dataValue;
-		location.href = "main?idx=" + dataValueIdx;
+		location.href = "main?idx=" + dataValueIdx + "&page=1";
 	});
 
 	var clickCount = 0;

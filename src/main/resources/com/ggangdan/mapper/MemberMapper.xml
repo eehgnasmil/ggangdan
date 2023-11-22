@@ -19,4 +19,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="WriteBoard" parameterType="String">
 		update member set exp = exp + 5 where codename = #{codename};
 	</update>
+	
+	<select id="getallranklist" resultType="memberDTO">
+		SELECT *, DENSE_RANK() OVER (ORDER BY lv DESC, exp DESC) as ranking
+		FROM member ORDER BY lv DESC, exp DESC;
+	</select>
+
+	<select id="getdepartmentranklist" parameterType="String" resultType="memberDTO">
+		SELECT *, DENSE_RANK() OVER (ORDER BY lv DESC, exp DESC) as ranking
+		FROM member where department = #{department}
+		ORDER BY lv DESC, exp DESC;
+	</select>
 </mapper>

@@ -7,9 +7,11 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ggangdan.dto.BoardVO;
 import com.ggangdan.dto.InvestigationDTO;
+import com.ggangdan.dto.PagingDTO;
 import com.ggangdan.dto.PopularInvestigationDTO;
 import com.ggangdan.dto.ProfileImageDTO;
 import com.ggangdan.mapper.BoardMapper;
@@ -87,7 +89,14 @@ public class MainServiceImpl implements MainService{
 	
 	///////////////////////////////////////////
 	@Override
-	public List<BoardVO> boardList(String codename) {
-		return BoardMapper.boardList(codename);
+	public int boardList(Map<String,Object> map) {
+		int getdto = BoardMapper.boardList(map);
+		return getdto;
 	}
+	@Override
+	public List<BoardVO> loadList(Map<String,Object> map) {
+	    List<BoardVO> getdto = BoardMapper.loadList(map);
+	    return getdto;
+	}
+
 }

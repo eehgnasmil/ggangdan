@@ -67,22 +67,41 @@ if (idxString == null) {
 				</div>
 				<div class="investigationboard">
 					<div class="search">
-						<select class="searchselect">
-							<option>전체</option>
-							<option>지휘부</option>
-							<option>셀럽부</option>
-							<option>첩보부</option>
-						</select> <input class="searchkeyword" type="text"
-							placeholder="검색할 내용을 입력해주세요">
-						<Button>검색</Button>
-						<a href="write?idx=<%=boardidx%>"><button class="Investigaionwrite">글쓰기</button></a>
+		               <select class="searchselect">
+		                  <option value="title_context" class="sel_option">전체</option>
+		                  <option value="commandPost" class="sel_option">지휘부</option>
+		                  <option value="CelebrityDepartment" class="sel_option">셀럽부</option>
+		                  <option value="IntelligenceDepartment" class="sel_option">첩보부</option>
+		               </select> 
+		               <input class="searchkeyword" type="text" placeholder="검색할 내용을 입력해주세요" id="searchInput"> 
+		               <button class="searchBtn">검색</button>
+		               <a href="write?idx=<%=boardidx %>" class="searchBtn"><button>글쓰기</button></a>
+		            </div>
+					<div class="write">
+		
 					</div>
-					<div class="write"></div>
 					<div class="board">
-						<div class="board_list_box"></div>
+						<div class="total_box">게시글 : <span id="total_count"></span> (개)</div>
+						<div class="board_list_box">
+						</div>
+						
+						
+						<c:forEach items="${items.content}" var="item">
+						    <!-- 아이템 데이터 표시 -->
+						</c:forEach>
+						
+						<div class="pagination">
+						    <c:forEach begin="1" end="${items.totalPages}" var="pageNum">
+						        <c:url var="pageLink" value="/items">
+						            <c:param name="page" value="${pageNum}" />
+						        </c:url>
+						        <a href="${pageLink}" class="${pageNum == items.number ? 'active' : ''}">${pageNum}</a>
+						    </c:forEach>
+						</div>
 					</div>
 				</div>
 			</div>
+			<%@include file="rank.jsp"%>
 		</div>
 
 		<%@include file="chat.jsp"%>

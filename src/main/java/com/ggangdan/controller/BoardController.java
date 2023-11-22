@@ -62,7 +62,7 @@ public class BoardController {
 		boardService.insert(board);
 		board = boardService.getLast();
 
-		return "redirect: main?idx=" + board.getIidx();
+		return "redirect: main?idx=" + board.getIidx() + "&page=1";
 	}
 
 	@PostMapping("getBest")

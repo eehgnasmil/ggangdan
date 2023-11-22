@@ -1,5 +1,7 @@
 package com.ggangdan.mapper;
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.ggangdan.dto.MemberDTO;
@@ -12,5 +14,6 @@ public interface MemberMapper {
 	MemberDTO getOne(String id);
 	public int logout(String id);
 	public int WriteBoard(String codename);
-
+	ArrayList<MemberDTO> getallranklist();
+	ArrayList<MemberDTO> getdepartmentranklist(String department);
 }
